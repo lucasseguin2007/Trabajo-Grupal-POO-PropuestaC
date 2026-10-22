@@ -218,3 +218,51 @@ Alt 1 (Paso 1):
 - El sistema registra los cambios
 
 Notas: -
+
+================================================================================
+CASO DE USO: CU-10 - Iniciar torneo
+================================================================================
+Objetivo: Permitirle al organizador dar por comenzado el torneo
+Actor principal: Organizador
+
+Precondiciones:
+1. Debe haber inscriptos al menos 4 clubes
+
+Flujo principal:
+Paso 1: El organizador solicita iniciar el torneo
+Paso 2: El sistema verifica que los clubes se encuentren completos
+Paso 3: El sistema consulta si desea que cree el fixture del torneo
+Paso 4: El organizador confirma
+Paso 5: El sistema llama a “Generar fixture”
+
+Flujos Alternativos:
+Alt 1 (Paso 3):
+- El organizador solicita no generar el fixture
+- El sistema únicamente inicia el torneo
+
+Notas: Al iniciar el torneo el sistema bloquea la posibilidad de modificar cosas de los clubes como modificar a los jugadores. (Refiriéndose únicamente a los registrados para ese torneo)
+
+================================================================================
+CASO DE USO: CU-11 - Calcular proyecciones
+================================================================================
+Objetivo: Poder realizar pruebas de los posibles resultados que podrían darse en el torneo
+Actor principal: Analista estadístico
+
+Precondiciones:
+(Ninguna)
+
+Flujo principal:
+Paso 1: El analista ingresa a calcular proyecciones
+Paso 2: El sistema consulta el torneo y el club que desea consultar
+Paso 3: El analista ingresa ambos datos
+Paso 4: El sistema consulta que tipo de proyección desea consultar
+Paso 5: El analista selecciona la proyección por historial
+Paso 6: El sistema llama a “Calcular por historial”
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El analista selecciona la proyección por rendimiento
+- El sistema llama a “Calcular por rendimiento”
+
+Notas: -
+
