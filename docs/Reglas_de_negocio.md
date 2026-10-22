@@ -20,7 +20,8 @@ Clubes, plantel y personas
 * Los datos y las estadísticas de un jugador se conservan aunque rescinda contrato o quede libre. Cada paso por un club queda registrado con su fecha de inicio y de fin.
 * Los árbitros tienen una categoría (nacional o internacional) y un colegio al que pertenecen.
 * Los partidos de torneos internacionales exigen una terna de categoría internacional.
-* Un árbitro no puede dirigir a un club del que sea hincha declarado ni tener otro partido el mismo día.
+* Un árbitro no puede dirigir a un club del que sea hincha declarado.
+* Un arbitro no puede ser asignado a más de un partido el mismo día
 
 Partidos y eventos
 ------------------
@@ -40,11 +41,13 @@ Partidos y eventos
 Sanciones
 ---------
 * Un jugador que acumula 5 amarillas en el torneo queda suspendido para la fecha siguiente.
-* Una roja directa implica 1 fecha de suspensión, y el sistema no permite incluirlo en la nómina del partido siguiente.
+* Una roja directa implica 1 fecha de suspensión.
+* Un jugador suspendido no puede ser incorporado a la nómina del partido en el que se deba cumplir la sanción.
 
 Notificaciones
 --------------
-* Se notifica a los suscriptores cuando hay un gol, una tarjeta roja o el final del partido. Cada notificación indica el partido, el minuto y el hecho.
+* Se notifica a los suscriptores cuando hay un gol, una tarjeta roja o el final del partido.
+* Toda notificación debe identificar el partido, el minuto y el evento.
 * Los canales iniciales son app móvil, correo para prensa y SMS. Cada suscriptor elige qué canales usa y qué clubes sigue.
 * Si un canal falla, el sistema lo registra y sigue con los demás: un fallo en el envío no puede frenar la carga del partido.
 * Debe poder incorporarse un canal nuevo (por ejemplo, mensería instantánea) sin modificar la lógica de los partidos.
@@ -64,7 +67,8 @@ Tabla de posiciones y reportes
 
 Proyecciones
 ------------
-* xG de un remate: depende de la zona desde la que se patea: área chica 0,40, área grande 0,15, fuera del área 0,04, penal 0,76. El xG de un jugador o un club en un partido es la suma de los xG de sus remates.
+* xG de un remate: depende de la zona desde la que se patea: área chica 0,40, área grande 0,15, fuera del área 0,04, penal 0,76. 
+* El xG de un jugador o club durante un partido se obtiene sumando los xG de sus remates.
 * Probabilidad de clasificación: el sistema debe ofrecer al menos dos métodos de cálculo intercambiables.
     - El primero proyecta los puntos finales a partir del promedio de puntos por partido y los compara con el puntaje de corte de años anteriores.
     - El segundo simula los partidos restantes usando el xG promedio de cada club.
