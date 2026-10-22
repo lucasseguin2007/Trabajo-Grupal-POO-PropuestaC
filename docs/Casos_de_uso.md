@@ -218,3 +218,143 @@ Alt 1 (Paso 1):
 - El sistema registra los cambios
 
 Notas: -
+
+================================================================================
+CASO DE USO: CU-10 - Iniciar torneo
+================================================================================
+Objetivo: Permitirle al organizador dar por comenzado el torneo
+Actor principal: Organizador
+
+Precondiciones:
+1. Debe haber inscriptos al menos 4 clubes
+
+Flujo principal:
+Paso 1: El organizador solicita iniciar el torneo
+Paso 2: El sistema verifica que los clubes se encuentren completos
+Paso 3: El sistema consulta si desea que cree el fixture del torneo
+Paso 4: El organizador confirma
+Paso 5: El sistema llama a “Generar fixture”
+
+Flujos Alternativos:
+Alt 1 (Paso 3):
+- El organizador solicita no generar el fixture
+- El sistema únicamente inicia el torneo
+
+Notas: Al iniciar el torneo el sistema bloquea la posibilidad de modificar cosas de los clubes como modificar a los jugadores. (Refiriéndose únicamente a los registrados para ese torneo)
+
+================================================================================
+CASO DE USO: CU-11 - Calcular proyecciones
+================================================================================
+Objetivo: Poder realizar pruebas de los posibles resultados que podrían darse en el torneo
+Actor principal: Analista estadístico
+
+Precondiciones:
+(Ninguna)
+
+Flujo principal:
+Paso 1: El analista ingresa a calcular proyecciones
+Paso 2: El sistema consulta el torneo y el club que desea consultar
+Paso 3: El analista ingresa ambos datos
+Paso 4: El sistema consulta que tipo de proyección desea consultar
+Paso 5: El analista selecciona la proyección por historial
+Paso 6: El sistema llama a “Calcular por historial”
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El analista selecciona la proyección por rendimiento
+- El sistema llama a “Calcular por rendimiento”
+
+Notas: -
+
+================================================================================
+CASO DE USO: CU-11 - Calcular proyecciones
+================================================================================
+Objetivo: Poder realizar pruebas de los posibles resultados que podrían darse en el torneo
+Actor principal: Analista estadístico
+
+Precondiciones:
+(Ninguna)
+
+Flujo principal:
+Paso 1: El analista ingresa a calcular proyecciones
+Paso 2: El sistema consulta el torneo y el club que desea consultar
+Paso 3: El analista ingresa ambos datos
+Paso 4: El sistema consulta que tipo de proyección desea consultar
+Paso 5: El analista selecciona la proyección por historial
+Paso 6: El sistema llama a “Calcular por historial”
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El analista selecciona la proyección por rendimiento
+- El sistema llama a “Calcular por rendimiento”
+
+Notas: -
+
+================================================================================
+CASO DE USO: CU-14 - Consultar tabla
+================================================================================
+Objetivo: Recibir la tabla de posiciones de un torneo específico que muestre: clubes, rankings, puntajes, goles, diferencia de gol, partidos jugados.
+Actor principal: Abstracto (Analista estadístico, suscriptor)
+
+Precondiciones:
+1. El torneo debe haber iniciado
+
+Flujo principal:
+Paso 1: El usuario ingresa a “Consultar tabla”
+Paso 2: El sistema consulta que torneo desea consultar
+Paso 3: El usuario selecciona el torneo que desea
+Paso 4: El sistema presenta la tabla solicitada
+
+Flujos Alternativos:
+Alt 1 (Paso 1):
+- El sistema detecta que el torneo no ha iniciado
+- El sistema notifica que la tabla aún no puede visualizarse porque el torneo no ha comenzado
+
+Notas: Hay dos posibles actores principales, el analista y el suscriptor. Por lo que es un actor abstracto
+
+================================================================================
+CASO DE USO: CU-15 - Consultar fixture
+================================================================================
+Objetivo: Presentarle al suscriptor el fixture completo de un torneo
+Actor principal: Suscriptor
+
+Precondiciones:
+1. El torneo debe haber iniciado
+2. El fixture debe haber sido generado
+
+Flujo principal:
+Paso 1: El suscriptor ingresa a consultar fixture
+Paso 2: El sistema consulta que torneo desea consultar
+Paso 3: El suscriptor selecciona el torneo
+Paso 4: El sistema presenta el fixture completo
+
+Flujos Alternativos:
+Alt 1 (Paso 1):
+- El sistema detecta que el torneo no ha iniciado
+- El sistema notifica al suscriptor que el fixture no se encuentra disponible aún.
+  Alt 2 (Paso 1):
+- El sistema detecta que el fixture no ha sido generado
+- El sistema notifica al suscriptor que el fixture no se encuentra disponible aún.
+
+Notas: -
+
+================================================================================
+CASO DE USO: CU-16 - Consultar notificaciones
+================================================================================
+Objetivo: Presentarle a el suscriptor todas las notificaciones que tiene sin leer
+Actor principal: Suscriptor
+
+Precondiciones:
+1. El suscriptor debe tener suscripciones activas
+
+Flujo principal:
+Paso 1: El suscriptor ingresa a la pestaña de notificaciones
+Paso 2: El sistema revisa las notificaciones sin abrir que tiene el suscriptor
+Paso 3: El sistema presenta las notificaciones sin leer
+
+Flujos Alternativos:
+Alt 1 (Paso 2):
+- El sistema detecta que no hay notificaciones nuevas
+- El sistema avisa al suscriptor que no tiene notificaciones pendientes
+
+Notas: -
