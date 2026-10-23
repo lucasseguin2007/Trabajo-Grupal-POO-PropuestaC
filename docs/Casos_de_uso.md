@@ -218,3 +218,75 @@ Alt 1 (Paso 1):
 - El sistema registra los cambios
 
 Notas: -
+
+================================================================================
+CASO DE USO: CU-09 - Registrar evento
+================================================================================
+Objetivo: Almacenar datos de cada partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. El partido debe estar en estado EN_JUEGO, con el jugador habilitado y convocado.
+
+Flujo principal:
+Paso 1: El Árbitro ingresa ID del evento
+Paso 2: El sistema pide los datos
+Paso 3: El Árbitro ingresa datos
+Paso 4: El sistema chequea que sean válidos
+Paso 5: El sistema pregunta si es correcto lo ingresado
+Paso 6: El Árbitro acepta
+Paso 7: El sistema busca evento
+Paso 8: El sistema carga datos
+
+Flujos Alternativos:
+Alt 1 (Paso 5):
+- El sistema pregunta si es correcto lo ingresado
+- El Árbitro deniega
+- El sistema pide datos
+- Continúa en el Paso 3
+
+Notas: -
+
+================================================================================
+CASO DE USO: CU-17 - Registrar tarjetas
+================================================================================
+Objetivo: Tener registrado las tarjetas de cada partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. Partido empezado
+
+Flujo principal:
+Paso 1: El Árbitro registra un evento
+Paso 2: El Árbitro selecciona la opción amonestación y la tarjeta
+Paso 3: El Árbitro ingresa nombre del jugador
+Paso 4: El sistema registra la sanción
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El sistema detecta que ya tiene amarilla ese jugador
+- El sistema notifica al árbitro que es la segunda amarilla
+- Continúa en el Paso 1
+
+Notas: -
+
+================================================================================
+CASO DE USO: CU-18 - Registrar cambios
+================================================================================
+Objetivo: Tener registrado los cambios del partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. Partido empezado
+
+Flujo principal:
+Paso 1: El Árbitro registra un evento
+Paso 2: El Árbitro selecciona la opción cambio
+Paso 3: El Árbitro ingresa nombre del jugador que entra y del que sale y el minuto
+Paso 4: El sistema registra el cambio
+
+Flujos Alternativos:
+Alt 1:
+-
+
+Notas: -
