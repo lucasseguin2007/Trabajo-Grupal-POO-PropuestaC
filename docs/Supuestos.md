@@ -7,7 +7,7 @@ SUPUESTOS
 * La generación automática de fixture utilizará una estructura todos contra todos de una sola pasada, alternando localías.
 * El minuto registrado tiene como límite hasta 120 para contemplar el tiempo adicional si es necesario.
 * No se permitirá asignar dos veces el mismo árbitro dentro de una terna ni asignarlo a otro partido en la misma fecha.
-* El operador es un usuario como un quinto árbitro autorizado para registrar y corregir eventos del partido.
+* El operador es un usuario autorizado para registrar y corregir eventos del partido, no modifica la terna de tres árbitros
 * Cada evento podrá tener como máximo una anulación efectiva. Tanto los registros originales y sus anulaciones permanecen almacenados para preservar la trazabilidad.
 * Dos patrocinios se consideran simultáneamente vigentes cuando sus períodos de vigencia se superpongan.
 * Las tablas y los reportes se calcularán utilizando información válida de partidos finalizados, sin considerar eventos anulados.
