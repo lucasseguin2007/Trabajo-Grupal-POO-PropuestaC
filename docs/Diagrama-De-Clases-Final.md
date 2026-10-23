@@ -1,0 +1,11 @@
+================================================================================
+CAMBIOS REALIZADOS
+================================================================================
+1. Se aplicó SRP al eliminar la responsabilidad de la operación del envío en la clase “Notificaciones” y se incorporó ServicioNotificaciones, que ahora se encarga de los envíos. También se agregó EnvioNotificacion para registrar individualmente el estado de cada intento, permitiendo tener registro de los errores de un canal sin afectar a los otros.
+2. Se aplicó OCP al incorporar la interfaz CanalEnvio, que define la operación de enviar(). También se implementó las clases CanalApp, CanalCorreo y CanalSMS que implementa la interfaz. Esto permite incorporar nuevos canales de comunicaciones sin modificar el comportamiento de clases existentes.
+3. Se aplicó DIP al relacionar la clase ServicioNotificaciones con la interfaz CanalEnvio, así no depende de cada implementación concreta, reduciendo el acoplamiento con los mecanismos de comunicación.
+4. Se incorporó un controlador denominado ControladorPartidos, que es responsable de recibir y coordinar las solicitudes de registro y anulación de eventos además del cierre de partidos. Esta clase deja a Partido solo con la responsabilidad de validar y modificar mientras que la coordinación de avisos se lo deja a ServicioNotificaciones.
+5. Se mantuvo en Remate el método calcularXG(), ya que cada remate sabe la zona donde se realizó y dispones la información necesaria para realizar dicho cálculo.
+6. Se mantuvo en Partido la responsabilidad de generar y registrar los eventos de anulación. Esto es debido a que el partido contiene el historial de eventos al que pertenece la anulación.
+7. Se evitó vincular la clase Partido directamente con los canales de comunicación. Toda esa responsabilidad se realiza mediante ControladorPartidos y ServicioNotificaciones.
+8. También el enum EstadoEnvio pasó a utilizarse en EnvioNotificacion y se eliminó CanalNotificacion debido a que los distintos canales se representan mediante clases que implementan CanalEnvio.
