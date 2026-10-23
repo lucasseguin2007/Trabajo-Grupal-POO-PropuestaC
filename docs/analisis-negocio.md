@@ -10,4 +10,5 @@ ACTORES DEL SISTEMA
 ==================================================================================
 Organizador: Es el responsable de la administración de los torneos, clubes, estadios, planteles, entrenadores y árbitros. Sus funcionalidades incluyen gestionar inscripciones, generar fixtures, programar partidos y administrar contratos y patrocinios.
 Suscriptor: Es el usuario interesado en recibir notificaciones sobre los clubes, los eventos que vayan ocurriendo sobre el partido y visualizar el fixture de los torneos.
-Árbitro (Operador de partido): responsable de registrar los eventos que vayan ocurriendo durante el partido y cerrar los partidos una vez que el partido termine.
+Operador de partido: Actúa como un árbitro autorizado, responsable de registrar los eventos que vayan ocurriendo durante el partido y cerrar los partidos una vez que el partido termine.
+Analista Estadístico: Es el responsable del armado de tablas de posiciones, lista de goleadores y la valla menos vencida. Solicita las proyecciones por rendimiento o por probabilidad de clasificación.

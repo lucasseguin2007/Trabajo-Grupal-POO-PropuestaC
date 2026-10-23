@@ -133,7 +133,7 @@ Notas:
 - Solo se puede utilizar una vez por torneo.
 
 ================================================================================
-CASO DE USO: CU-06 - Inscribir club
+CASO DE USO: CU-06 - Registrar club
 ================================================================================
 Objetivo: Poder registrar un nuevo club en el sistema
 Actor principal: Organizador
@@ -142,8 +142,8 @@ Precondiciones:
 (Ninguna)
 
 Flujo principal:
-Paso 1: El organizador ingresa a inscribir club
-Paso 2: El sistema solicita los datos del nuevo club a inscribir
+Paso 1: El organizador ingresa a registrar club
+Paso 2: El sistema solicita los datos del nuevo club a registrar
 Paso 3: El organizador carga los datos
 Paso 4: El sistema verifica que el nombre del club no se encuentre en uso
 Paso 5: El sistema solicita una confirmación
@@ -173,7 +173,7 @@ Precondiciones:
 
 Flujo principal:
 Paso 1: El organizador ingresa a modificar jugador
-Paso 2: El organizador selecciona el estadio que desea modificar
+Paso 2: El organizador selecciona el jugador que desea modificar
 Paso 3: El organizador selecciona el atributo que desea modificar
 Paso 4: El sistema solicita el nuevo valor para el atributo
 Paso 5: El organizador carga el nuevo valor
