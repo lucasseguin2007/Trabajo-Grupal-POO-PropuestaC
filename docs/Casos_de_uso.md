@@ -18,7 +18,7 @@ Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador solicita no registrar los cambios
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -47,7 +47,7 @@ Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador deniega
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -71,11 +71,11 @@ Paso 3: El organizador selecciona el atributo que desea modificar
 Paso 4: El sistema solicita el nuevo valor para el atributo
 Paso 5: El organizador carga el nuevo valor
 Paso 6: El sistema solicita una confirmación para registrar el cambio
-Paso 7: El organizador confirms
+Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador deniega
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -103,7 +103,7 @@ Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador deniega
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -151,11 +151,11 @@ Paso 6: El organizador confirma los datos
 Paso 7: El sistema registra el nuevo club
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 4):
 - El sistema notifica que el nombre solicitado no se encuentra disponible
 - El sistema solicita un nuevo nombre
 - El usuario ingresa el nuevo nombre
-Alt 2 (Paso 1):
+Alt 2 (Paso 6):
 - El organizador deniega los datos
 - El sistema cancela la agregación
 
@@ -182,7 +182,7 @@ Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador deniega
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -211,7 +211,7 @@ Paso 7: El organizador confirma
 Paso 8: El sistema registra el cambio
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 7):
 - El organizador deniega
 - El sistema ofrece corregir los datos
 - El organizador corrige los datos
@@ -248,7 +248,7 @@ Objetivo: Permitirle al organizador dar por comenzado el torneo
 Actor principal: Organizador
 
 Precondiciones:
-1. Debe haber inscriptos al menos 4 clubes
+1. Debe haber al menos 4 clubes inscriptos
 
 Flujo principal:
 Paso 1: El organizador solicita iniciar el torneo
@@ -258,7 +258,7 @@ Paso 4: El organizador confirma
 Paso 5: El sistema llama a “Generar fixture”
 
 Flujos Alternativos:
-Alt 1 (Paso 3):
+Alt 1 (Paso 4):
 - El organizador solicita no generar el fixture
 - El sistema únicamente inicia el torneo
 
@@ -286,7 +286,6 @@ Alt 1 (Paso 4):
 
 Notas: -
 
-================================================================================
 CASO DE USO: CU-17 - Registrar tarjetas
 Objetivo: Tener registrado las tarjetas de cada partido
 Actor principal: Árbitro
@@ -341,7 +340,7 @@ Paso 3: El usuario selecciona el torneo que desea
 Paso 4: El sistema presenta la tabla solicitada
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 4):
 - El sistema detecta que el torneo no ha iniciado
 - El sistema notifica que la tabla aún no puede visualizarse porque el torneo no ha comenzado
 
@@ -362,10 +361,10 @@ Paso 3: El suscriptor selecciona el torneo
 Paso 4: El sistema presenta el fixture completo
 
 Flujos Alternativos:
-Alt 1 (Paso 1):
+Alt 1 (Paso 3):
 - El sistema detecta que el torneo no ha iniciado
 - El sistema notifica al suscriptor que el fixture no se encuentra disponible aún.
-  Alt 2 (Paso 1):
+  Alt 2 (Paso 4):
 - El sistema detecta que el fixture no ha sido generado
 - El sistema notifica al suscriptor que el fixture no se encuentra disponible aún.
 
