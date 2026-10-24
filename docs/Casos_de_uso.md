@@ -220,6 +220,38 @@ Alt 1 (Paso 7):
 Notas: -
 
 ================================================================================
+CASO DE USO: CU-09 - Registrar evento
+================================================================================
+
+Objetivo: Almacenar datos de cada partido
+
+Actor principal: Operador del partido
+
+Precondiciones:
+1. El partido debe estar en estado EN_JUEGO, con el jugador habilitado y convocado.
+
+Flujo principal:
+Paso 1: Árbitro ingresa ID del evento
+Paso 2: Sistema pide los datos
+Paso 3: Árbitro ingresa datos
+Paso 4: Sistema chequea que sean válidos
+Paso 5: Sistema pregunta si es correcto lo ingresado
+Paso 6: Árbitro acepta
+Paso 7: Sistema busca evento
+Paso 8: Sistema carga datos
+
+Flujos Alternativos:
+Alt 1 (Paso 5):
+- Sistema pregunta si es correcto lo ingresado
+- Árbitro deniega
+- Sistema pide datos
+- Continua
+
+Notas:
+-.
+
+
+================================================================================
 CASO DE USO: CU-10 - Iniciar torneo
 ================================================================================
 Objetivo: Permitirle al organizador dar por comenzado el torneo
@@ -265,6 +297,50 @@ Alt 1 (Paso 5):
 - El sistema llama a “Calcular por rendimiento”
 
 Notas: -
+
+================================================================================
+CASO DE USO: CU-12 - Terminar partido
+================================================================================
+
+Objetivo: Dar como terminado el partido
+
+Actor principal: Operador del partido
+
+Precondiciones:
+1. Partido en curso
+
+Flujo principal:
+Paso 1: El árbitro ingresa a “Terminar partido”
+Paso 2: El árbitro solicita al sistema cambiar el estado del partido a “terminado”
+Paso 3: El sistema cambia el estado del partido a “terminado”
+Paso 4: El sistema registra el resultado definitivo, y registra los eventos del partido
+
+Flujos Alternativos:
+
+Notas:
+-
+
+================================================================================
+CASO DE USO: CU-13 - Registrar goles
+================================================================================
+
+Objetivo: Tener registrado el resultado del partido
+
+Actor principal: Operador del partido
+
+Precondiciones:
+1. Partido en curso
+
+Flujo principal:
+Paso 1: Operador del partido registra un evento
+Paso 2: El Operador del partido selecciona la opción “gol”
+Paso 3: El Operador del partido ingresa nombre del jugador y minuto
+Paso 4: Sistema registra el gol
+
+Flujos Alternativos:
+
+Notas:
+-
 
 ================================================================================
 CASO DE USO: CU-14 - Consultar tabla
@@ -334,3 +410,52 @@ Alt 1 (Paso 2):
 - El sistema avisa al suscriptor que no tiene notificaciones pendientes
 
 Notas: -
+
+================================================================================
+CASO DE USO: CU-17 - Registrar tarjetas
+================================================================================
+
+Objetivo: Tener registrado las tarjetas de cada partido
+
+Actor principal: Operador del partido
+
+Precondiciones:
+1. Partido en curso
+
+Flujo principal:
+Paso 1: El operador del partido registra un evento
+Paso 2: El operador del partido selecciona la opción amonestación y la tarjeta
+Paso 3: El operador del partido ingresa nombre del jugador
+Paso 4: Sistema registra la sanción
+
+Flujos Alternativos:
+Alt 1 (Paso 1):
+- Sistema detecta que ya tiene amarilla ese jugador
+- Sistema notifica al operador del partido que es la segunda amarilla
+- Operador del partido notifica al árbitro
+- Árbitro Expulsa al jugador
+
+Notas:
+-
+
+================================================================================
+CASO DE USO: CU-18 - Registrar cambios
+================================================================================
+
+Objetivo: Tener registrado los cambios del partido
+
+Actor principal: Operador del partido
+
+Precondiciones:
+1. Partido en curso
+
+Flujo principal:
+Paso 1: Operador del partido registra un evento
+Paso 2: El Operador del partido selecciona la opción “cambio”
+Paso 3: El Operador del partido ingresa nombre del jugador que entra y del que sale y el minuto
+Paso 4: El sistema registra el cambio
+
+Flujos Alternativos:
+
+Notas:
+-
