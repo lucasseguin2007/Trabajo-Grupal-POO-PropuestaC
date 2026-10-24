@@ -80,7 +80,7 @@ PRIMERA CLASE     | SEGUNDA CLASE     | RELACIÓN   | CARDINALIDAD
 Torneo        | InscripcionTorneo | Asociación | 1 a N
 Club              | InscripcionTorneo | Asociación | 1 a N
 InscripcionTorneo | Plantel       | Composición| 1 a 1
-Plantel | JugadorPlantel | Composición | 1 a 30
+Plantel | JugadorPlantel | Composición | 18 a 30
 JugadorPlantel | Jugador | Asociación | 1 a 1
 Club | Jugador | Asociación | 1 a N
 Jugador | Contrato | Asociación | 1 a N
@@ -101,7 +101,7 @@ TernaArbitral | Árbitro | Asociación | 1 a 1
 TernaArbitral | Árbitro | Asociación | 1 a 2
 Árbitro | Club (hincha) | Asociación | 1 a N
 Partido | NominaPartido | Composición | 1 a 2
-NominaPartido | Club | Asociación | 1
+NominaPartido | Club | Asociación | 1 a N
 NominaPartido | Jugador | Asociación | N a M
 
 ================================================================================
@@ -109,7 +109,7 @@ RELACIONES ENTRE TORNEO, CLUBES, JUGADORES Y CONTRATOS
 ================================================================================
 PRIMERA CLASE | SEGUNDA CLASE | RELACIÓN | CARDINALIDADES
 Partido | Evento | Composición | 1 a N
-Jugador | Evento | Asociación | 1 a
+Jugador | Evento | Asociación | 1 a N
 Cambio | Jugador | Asociación | 1 a 1
 AnulacionEvento | Evento | Asociación | 1 a 1
 
