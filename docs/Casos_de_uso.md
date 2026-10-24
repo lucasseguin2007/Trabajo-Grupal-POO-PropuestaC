@@ -220,8 +220,30 @@ Alt 1 (Paso 7):
 Notas: -
 
 ================================================================================
+CASO DE USO: CU-09 - Registrar evento
+Objetivo: Almacenar datos de cada partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. El partido debe estar en estado EN_JUEGO, con el jugador habilitado y convocado.
+
+Flujo principal:
+Paso 1: El Árbitro ingresa ID del evento
+Paso 2: El sistema pide los datos
+Paso 3: El Árbitro ingresa datos
+Paso 4: El sistema chequea que sean válidos
+Paso 5: El sistema pregunta si es correcto lo ingresado
+Paso 6: El Árbitro acepta
+Paso 7: El sistema busca evento
+Paso 8: El sistema carga datos
+
+Flujos Alternativos:
+Alt 1 (Paso 5):
+- El sistema pregunta si es correcto lo ingresado
+- El Árbitro deniega
+- El sistema pide datos
+- Continúa en el Paso 3
 CASO DE USO: CU-10 - Iniciar torneo
-================================================================================
 Objetivo: Permitirle al organizador dar por comenzado el torneo
 Actor principal: Organizador
 
@@ -242,9 +264,7 @@ Alt 1 (Paso 4):
 
 Notas: Al iniciar el torneo el sistema bloquea la posibilidad de modificar cosas de los clubes como modificar a los jugadores. (Refiriéndose únicamente a los registrados para ese torneo)
 
-================================================================================
 CASO DE USO: CU-11 - Calcular proyecciones
-================================================================================
 Objetivo: Poder realizar pruebas de los posibles resultados que podrían darse en el torneo
 Actor principal: Analista estadístico
 
@@ -260,15 +280,53 @@ Paso 5: El analista selecciona la proyección por historial
 Paso 6: El sistema llama a “Calcular por historial”
 
 Flujos Alternativos:
-Alt 1 (Paso 5):
+Alt 1 (Paso 4):
 - El analista selecciona la proyección por rendimiento
 - El sistema llama a “Calcular por rendimiento”
 
 Notas: -
 
-================================================================================
+CASO DE USO: CU-17 - Registrar tarjetas
+Objetivo: Tener registrado las tarjetas de cada partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. Partido empezado
+
+Flujo principal:
+Paso 1: El Árbitro registra un evento
+Paso 2: El Árbitro selecciona la opción amonestación y la tarjeta
+Paso 3: El Árbitro ingresa nombre del jugador
+Paso 4: El sistema registra la sanción
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El sistema detecta que ya tiene amarilla ese jugador
+- El sistema notifica al árbitro que es la segunda amarilla
+- Continúa en el Paso 1
+CASO DE USO: CU-11 - Calcular proyecciones
+Objetivo: Poder realizar pruebas de los posibles resultados que podrían darse en el torneo
+Actor principal: Analista estadístico
+
+Precondiciones:
+(Ninguna)
+
+Flujo principal:
+Paso 1: El analista ingresa a calcular proyecciones
+Paso 2: El sistema consulta el torneo y el club que desea consultar
+Paso 3: El analista ingresa ambos datos
+Paso 4: El sistema consulta que tipo de proyección desea consultar
+Paso 5: El analista selecciona la proyección por historial
+Paso 6: El sistema llama a “Calcular por historial”
+
+Flujos Alternativos:
+Alt 1 (Paso 4):
+- El analista selecciona la proyección por rendimiento
+- El sistema llama a “Calcular por rendimiento”
+
+Notas: -
+
 CASO DE USO: CU-14 - Consultar tabla
-================================================================================
 Objetivo: Recibir la tabla de posiciones de un torneo específico que muestre: clubes, rankings, puntajes, goles, diferencia de gol, partidos jugados.
 Actor principal: Abstracto (Analista estadístico, suscriptor)
 
@@ -288,9 +346,7 @@ Alt 1 (Paso 4):
 
 Notas: Hay dos posibles actores principales, el analista y el suscriptor. Por lo que es un actor abstracto
 
-================================================================================
 CASO DE USO: CU-15 - Consultar fixture
-================================================================================
 Objetivo: Presentarle al suscriptor el fixture completo de un torneo
 Actor principal: Suscriptor
 
@@ -315,8 +371,23 @@ Alt 1 (Paso 3):
 Notas: -
 
 ================================================================================
+CASO DE USO: CU-18 - Registrar cambios
+Objetivo: Tener registrado los cambios del partido
+Actor principal: Árbitro
+
+Precondiciones:
+1. Partido empezado
+
+Flujo principal:
+Paso 1: El Árbitro registra un evento
+Paso 2: El Árbitro selecciona la opción cambio
+Paso 3: El Árbitro ingresa nombre del jugador que entra y del que sale y el minuto
+Paso 4: El sistema registra el cambio
+
+Flujos Alternativos:
+Alt 1:
+-
 CASO DE USO: CU-16 - Consultar notificaciones
-================================================================================
 Objetivo: Presentarle a el suscriptor todas las notificaciones que tiene sin leer
 Actor principal: Suscriptor
 
