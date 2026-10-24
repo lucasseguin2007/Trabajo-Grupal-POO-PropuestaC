@@ -231,12 +231,12 @@ Precondiciones:
 1. El partido debe estar en estado EN_JUEGO, con el jugador habilitado y convocado.
 
 Flujo principal:
-Paso 1: Árbitro ingresa ID del evento
+Paso 1: Operador ingresa ID del evento
 Paso 2: Sistema pide los datos
-Paso 3: Árbitro ingresa datos
+Paso 3: Operador ingresa datos
 Paso 4: Sistema chequea que sean válidos
 Paso 5: Sistema pregunta si es correcto lo ingresado
-Paso 6: Árbitro acepta
+Paso 6: El operador acepta
 Paso 7: Sistema busca evento
 Paso 8: Sistema carga datos
 
@@ -310,8 +310,8 @@ Precondiciones:
 1. Partido en curso
 
 Flujo principal:
-Paso 1: El árbitro ingresa a “Terminar partido”
-Paso 2: El árbitro solicita al sistema cambiar el estado del partido a “terminado”
+Paso 1: El operador ingresa a “Terminar partido”
+Paso 2: El operador solicita al sistema cambiar el estado del partido a “terminado”
 Paso 3: El sistema cambia el estado del partido a “terminado”
 Paso 4: El sistema registra el resultado definitivo, y registra los eventos del partido
 
