@@ -1,3 +1,5 @@
+import Enums.CategoriaArbitro;
+
 import java.time.LocalDate;
 
 public class Arbitro extends Persona{
