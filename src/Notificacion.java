@@ -1,3 +1,6 @@
+import Enums.EstadoEnvio;
+import Enums.TipoNotificacion;
+
 import java.util.Date;
 
 public class Notificacion {

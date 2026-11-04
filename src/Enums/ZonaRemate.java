@@ -1,3 +1,5 @@
+package Enums;
+
 public enum ZonaRemate {
     AREA_CHICA,
     AREA_GRANDE,

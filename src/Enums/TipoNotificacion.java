@@ -1,3 +1,5 @@
+package Enums;
+
 public enum TipoNotificacion {
     GOL,
     EMPEZO_PARTIDO,
