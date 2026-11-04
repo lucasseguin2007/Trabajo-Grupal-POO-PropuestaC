@@ -2,19 +2,19 @@
 CLASES Y ATRIBUTOS
 ================================================================================
 Persona (clase abstracta): String nombre, String apellido, int dni, Date fechaNacimiento
-Jugador extends Persona: Posicion posicion, double valorMercado, int partidosJugados, int goles, int tarjetasAmarillas, int tarjetasRojas
+Jugador extends Persona: Enums.Posicion posicion, double valorMercado, int partidosJugados, int goles, int tarjetasAmarillas, int tarjetasRojas
 Entrenador extends Persona: Especialidad especialidad, String licencia
 Árbitro extends Persona: Categoria categoria, String colegio
 TernaArbitral:
 Club: String nombre, Date fechaFundacion
-Torneo: String nombre, LocalDate fechaInicio, LocalDate fechaFin, EstadoTorneo estado
+Torneo: String nombre, LocalDate fechaInicio, LocalDate fechaFin, Enums.EstadoTorneo estado
 InscripcionTorneo: LocalDate fechaInscripcion
 Estadio: String nombre, int capacidad, String climaHabitual, tipoCesped tipoCesped
 Direccion: String calle, int numero, String ciudad, String provincia
 Plantel:
 JugadorPlantel: int numeroCamiseta, LocalDate fechaAlta, LocalDate fechaBaja
 Contrato: LocalDate fechaInicio, LocalDate fechaFin, sueldo: double
-Partido: LocalDateTime fechahora, EstadoPartido, int golesLocal, golesVisitante int
+Partido: LocalDateTime fechahora, Enums.EstadoPartido, int golesLocal, golesVisitante int
 NominaPartido: RolEquipo rol
 Evento: int minuto
 Gol extends Evento: TipoGol tipoGol
@@ -38,12 +38,12 @@ ProyeccionPorSimulacionXG implements ProyeccionClasificacion:
 ================================================================================
 ENUMERACIONES
 ================================================================================
-EstadoTorneo: PLANIFICADO, EN_CURSO, FINALIZADO.
-EstadoPartido: PROGRAMADO, EN_JUEGO, FINALIZADO, SUSPENDIDO.
-Posicion: ARQUERO, DEFENSOR, MEDIOCAMPISTA, DELANTERO.
-EspecialidadEntrenador: DIRECTOR_TECNICO, PREPARADOR_FISICO, AYUDANTE.
-CategoriaArbitro: NACIONAL, INTERNACIONAL.
-TipoCesped: NATURAL, SINTETICO, HIBRIDO.
+Enums.EstadoTorneo: PLANIFICADO, EN_CURSO, FINALIZADO.
+Enums.EstadoPartido: PROGRAMADO, EN_JUEGO, FINALIZADO, SUSPENDIDO.
+Enums.Posicion: ARQUERO, DEFENSOR, MEDIOCAMPISTA, DELANTERO.
+Enums.EspecialidadEntrenador: DIRECTOR_TECNICO, PREPARADOR_FISICO, AYUDANTE.
+Enums.CategoriaArbitro: NACIONAL, INTERNACIONAL.
+Enums.TipoCesped: NATURAL, SINTETICO, HIBRIDO.
 ZonaRemate: AREA_CHICA, AREA_GRANDE, FUERA_DEL_AREA, PENAL.
 RolEquipo: LOCAL, VISITANTE.
 CanalNotificacion: APP_MOVIL, CORREO_PRENSA, SMS.
