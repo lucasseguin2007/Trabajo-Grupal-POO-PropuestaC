@@ -47,7 +47,7 @@ Ventaja: la coordinación queda separada de las reglas de negocio, que siguen si
 
 4. BAJO ACOPLAMIENTO
 
-Cada vez que se cambiaría un canal, podría terminar modificando el código relacionado con el partido. Una solución podría ser mantener responsabilidades distribuidas. Partido registra y valida eventos, ControladorPartidos coordina el caso de uso, ServicioNotificaciones gestión el envío y CanalEnvio define el contrato para las implementaciones.
+Cada vez que se cambiaría un canal, podría terminar modificando el código relacionado con el partido. Una solución podría ser mantener responsabilidades distribuidas. Partido registra y valida eventos, ControladorPartidos coordina el caso de uso, ServicioNotificaciones gestiona el envío y CanalEnvio define el contrato para las implementaciones.
 Justificación: Evita que Partido dependa de implementaciones externas de notificación.
 Clases involucradas: Partido, ControladorPartidos, ServicioNotificaciones, CanalEnvio y sus implementaciones.
 Ventaja: los cambios en los canales de envío tienen un impacto limitado sobre la lógica deportiva.
