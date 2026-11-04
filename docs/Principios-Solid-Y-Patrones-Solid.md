@@ -28,7 +28,7 @@ PATRONES GRASP
 
 Este patrón se puede aplicar en cálculo del xG, ya que Remate conoce la zona desde la que fue realizado entonces es lógico que el objeto lo calcule.
 Justificación: No tiene sentido que GestorReportes conozca los valores específicos de cada zona si puede pedirle a cada remate su resultado.
-Clases involucradas: Remate, ZonaRemate y GestorReportes.
+Clases involucradas: Remate, Enums.ZonaRemate y GestorReportes.
 Ventaja: la lógica de cálculo queda cerca de sus datos y las otras clases solo tiene que invoca calcularXG().
 
 2. CREADOR

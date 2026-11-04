@@ -822,7 +822,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-162" parent="4zhWG1AnBT9DFQFxfhex-161" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-zona: ZonaRemate" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-162" parent="4zhWG1AnBT9DFQFxfhex-161" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-zona: Enums.ZonaRemate" vertex="1">
           <mxGeometry height="50" width="220" y="30" as="geometry" />
         </mxCell>
         <mxCell id="4zhWG1AnBT9DFQFxfhex-163" parent="4zhWG1AnBT9DFQFxfhex-161" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -947,7 +947,7 @@
         <mxCell id="4zhWG1AnBT9DFQFxfhex-187" parent="4zhWG1AnBT9DFQFxfhex-185" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
           <mxGeometry height="5" width="160" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-188" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;ZonaRemate" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-188" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.ZonaRemate" vertex="1">
           <mxGeometry height="120" width="160" x="1740" y="630" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -976,7 +976,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-194" parent="4zhWG1AnBT9DFQFxfhex-193" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-rol: RolEquipo" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-194" parent="4zhWG1AnBT9DFQFxfhex-193" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-rol: Enums.RolEquipo" vertex="1">
           <mxGeometry height="50" width="330" y="30" as="geometry" />
         </mxCell>
         <mxCell id="4zhWG1AnBT9DFQFxfhex-195" parent="4zhWG1AnBT9DFQFxfhex-193" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -1004,7 +1004,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-200" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;RolEquipo" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-200" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.RolEquipo" vertex="1">
           <mxGeometry height="120" width="160" x="2650" y="1400" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -1023,7 +1023,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-205" parent="4zhWG1AnBT9DFQFxfhex-204" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechasSuspension: int&#xa;-fechasCumplidas: int&#xa;-fechaRegistro: LocalDate&#xa;-motivo: MotivoSancion&#xa;" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-205" parent="4zhWG1AnBT9DFQFxfhex-204" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechasSuspension: int&#xa;-fechasCumplidas: int&#xa;-fechaRegistro: LocalDate&#xa;-motivo: Enums.MotivoSancion&#xa;" vertex="1">
           <mxGeometry height="70" width="170" y="30" as="geometry" />
         </mxCell>
         <mxCell id="4zhWG1AnBT9DFQFxfhex-206" parent="4zhWG1AnBT9DFQFxfhex-204" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -1153,7 +1153,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-239" parent="4zhWG1AnBT9DFQFxfhex-238" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-nombre: String&#xa;-correo: String&#xa;-telefono: String&#xa;-canales: List&lt;CanalNotificacion&gt;&#xa;" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-239" parent="4zhWG1AnBT9DFQFxfhex-238" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-nombre: String&#xa;-correo: String&#xa;-telefono: String&#xa;-canales: List&lt;Enums.CanalNotificacion&gt;&#xa;" vertex="1">
           <mxGeometry height="70" width="270" y="30" as="geometry" />
         </mxCell>
         <mxCell id="4zhWG1AnBT9DFQFxfhex-240" parent="4zhWG1AnBT9DFQFxfhex-238" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -1208,7 +1208,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-249" parent="4zhWG1AnBT9DFQFxfhex-248" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-minuto: int&#xa;-descripcion: String&#xa;-tipo: TipoNotificacion&#xa;-fechaCreacion:LocalDateTime&#xa;-tipoNotificacion: TipoNotificacion&#xa;" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-249" parent="4zhWG1AnBT9DFQFxfhex-248" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-minuto: int&#xa;-descripcion: String&#xa;-tipo: Enums.TipoNotificacion&#xa;-fechaCreacion:LocalDateTime&#xa;-tipoNotificacion: Enums.TipoNotificacion&#xa;" vertex="1">
           <mxGeometry height="120" width="200" y="30" as="geometry" />
         </mxCell>
         <mxCell id="4zhWG1AnBT9DFQFxfhex-250" parent="4zhWG1AnBT9DFQFxfhex-248" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -1217,7 +1217,7 @@
         <mxCell id="4zhWG1AnBT9DFQFxfhex-251" parent="4zhWG1AnBT9DFQFxfhex-248" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="+obtenerMensaje(): String" vertex="1">
           <mxGeometry height="55" width="200" y="155" as="geometry" />
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-255" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;TipoNotificacion" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-255" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.TipoNotificacion" vertex="1">
           <mxGeometry height="105" width="160" x="570" y="2090" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -1228,7 +1228,7 @@
         <mxCell id="4zhWG1AnBT9DFQFxfhex-257" parent="4zhWG1AnBT9DFQFxfhex-255" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
           <mxGeometry height="5" width="160" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-258" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;   EstadoEnvio" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-258" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;   Enums.EstadoEnvio" vertex="1">
           <mxGeometry height="120" width="160" x="920" y="2100" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -1392,7 +1392,7 @@
         <mxCell id="4zhWG1AnBT9DFQFxfhex-288" parent="4zhWG1AnBT9DFQFxfhex-286" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="+calcular(torneo: Torneo, club: Club): double" vertex="1">
           <mxGeometry height="30" width="250" y="45" as="geometry" />
         </mxCell>
-        <mxCell id="4zhWG1AnBT9DFQFxfhex-289" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;MotivoSancion" vertex="1">
+        <mxCell id="4zhWG1AnBT9DFQFxfhex-289" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.MotivoSancion" vertex="1">
           <mxGeometry height="105" width="180" x="1310" y="2360" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -1504,7 +1504,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="e5_QivylAkQAph1L2Pv_-2" parent="e5_QivylAkQAph1L2Pv_-1" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechaIntento: LocalDateTime&#xa;-estado: EstadoEnvio&#xa;-detalleError: String&#xa;" vertex="1">
+        <mxCell id="e5_QivylAkQAph1L2Pv_-2" parent="e5_QivylAkQAph1L2Pv_-1" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechaIntento: LocalDateTime&#xa;-estado: Enums.EstadoEnvio&#xa;-detalleError: String&#xa;" vertex="1">
           <mxGeometry height="65" width="250" y="30" as="geometry" />
         </mxCell>
         <mxCell id="e5_QivylAkQAph1L2Pv_-3" parent="e5_QivylAkQAph1L2Pv_-1" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
