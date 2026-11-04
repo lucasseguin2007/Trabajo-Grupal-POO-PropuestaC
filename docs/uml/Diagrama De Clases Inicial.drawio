@@ -65,7 +65,7 @@
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--3" parent="zkfFHV4jXpPFQw0GAbJ--0" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" value="-fechaFin: LocalDate" vertex="1">
           <mxGeometry height="26" width="180" y="78" as="geometry" />
         </mxCell>
-        <mxCell id="63_CUB5XN3VQiQE-hKQu-0" parent="zkfFHV4jXpPFQw0GAbJ--0" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" value="-estado: EstadoTorneo" vertex="1">
+        <mxCell id="63_CUB5XN3VQiQE-hKQu-0" parent="zkfFHV4jXpPFQw0GAbJ--0" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" value="-estado: Enums.EstadoTorneo" vertex="1">
           <mxGeometry height="26" width="180" y="104" as="geometry" />
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--4" parent="zkfFHV4jXpPFQw0GAbJ--0" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -352,7 +352,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="63_CUB5XN3VQiQE-hKQu-20" parent="63_CUB5XN3VQiQE-hKQu-19" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-posicion: Posicion&#xa;-valorMercado: Double&#xa;-partidosJugados: int&#xa;-goles: int&#xa;-tarjetasAmarillas: int&#xa;-tarjetasRojas: int" vertex="1">
+        <mxCell id="63_CUB5XN3VQiQE-hKQu-20" parent="63_CUB5XN3VQiQE-hKQu-19" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-posicion: Enums.Posicion&#xa;-valorMercado: Double&#xa;-partidosJugados: int&#xa;-goles: int&#xa;-tarjetasAmarillas: int&#xa;-tarjetasRojas: int" vertex="1">
           <mxGeometry height="125" width="220" y="30" as="geometry" />
         </mxCell>
         <mxCell id="63_CUB5XN3VQiQE-hKQu-21" parent="63_CUB5XN3VQiQE-hKQu-19" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -454,7 +454,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="63_CUB5XN3VQiQE-hKQu-28" parent="63_CUB5XN3VQiQE-hKQu-27" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-categoria: CategoriaArbitro&#xa;-colegio: String&#xa;" vertex="1">
+        <mxCell id="63_CUB5XN3VQiQE-hKQu-28" parent="63_CUB5XN3VQiQE-hKQu-27" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-categoria: Enums.CategoriaArbitro&#xa;-colegio: String&#xa;" vertex="1">
           <mxGeometry height="50" width="240" y="30" as="geometry" />
         </mxCell>
         <mxCell id="63_CUB5XN3VQiQE-hKQu-29" parent="63_CUB5XN3VQiQE-hKQu-27" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -513,7 +513,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="63_CUB5XN3VQiQE-hKQu-48" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;EspecialidadEntrenador" vertex="1">
+        <mxCell id="63_CUB5XN3VQiQE-hKQu-48" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.EspecialidadEntrenador" vertex="1">
           <mxGeometry height="120" width="160" x="1480" y="2160" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -524,7 +524,7 @@
         <mxCell id="63_CUB5XN3VQiQE-hKQu-50" parent="63_CUB5XN3VQiQE-hKQu-48" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
           <mxGeometry height="5" width="160" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="63_CUB5XN3VQiQE-hKQu-61" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;CategoriaArbitro" vertex="1">
+        <mxCell id="63_CUB5XN3VQiQE-hKQu-61" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.CategoriaArbitro" vertex="1">
           <mxGeometry height="120" width="150" x="2260" y="1980" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -621,7 +621,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-7" parent="9c8PT9vNgFuJtXoBoaey-0" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechaHora: LocalDateTime&#xa;-estado: EstadoPartido&#xa;-golesLocal: int&#xa;-golesVisitante: int" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-7" parent="9c8PT9vNgFuJtXoBoaey-0" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-fechaHora: LocalDateTime&#xa;-estado: Enums.EstadoPartido&#xa;-golesLocal: int&#xa;-golesVisitante: int" vertex="1">
           <mxGeometry height="65" width="260" y="30" as="geometry" />
         </mxCell>
         <mxCell id="9c8PT9vNgFuJtXoBoaey-2" parent="9c8PT9vNgFuJtXoBoaey-0" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -685,7 +685,7 @@
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-32" parent="9c8PT9vNgFuJtXoBoaey-31" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-nombre: String&#xa;-capacidad: int&#xa;-climaHabitual: String&#xa;-tipoCesped: TipoCesped" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-32" parent="9c8PT9vNgFuJtXoBoaey-31" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-nombre: String&#xa;-capacidad: int&#xa;-climaHabitual: String&#xa;-tipoCesped: Enums.TipoCesped" vertex="1">
           <mxGeometry height="85" width="250" y="30" as="geometry" />
         </mxCell>
         <mxCell id="9c8PT9vNgFuJtXoBoaey-33" parent="9c8PT9vNgFuJtXoBoaey-31" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -738,7 +738,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-51" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;EstadoTorneo" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-51" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.EstadoTorneo" vertex="1">
           <mxGeometry height="120" width="160" x="730" y="800" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -749,7 +749,7 @@
         <mxCell id="9c8PT9vNgFuJtXoBoaey-53" parent="9c8PT9vNgFuJtXoBoaey-51" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
           <mxGeometry height="5" width="160" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-55" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;EstadoPartido" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-55" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.EstadoPartido" vertex="1">
           <mxGeometry height="120" width="160" x="2630" y="1140" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -768,7 +768,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-59" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;TipoCesped" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-59" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.TipoCesped" vertex="1">
           <mxGeometry height="105" width="170" x="3180" y="820" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
@@ -1103,7 +1103,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9c8PT9vNgFuJtXoBoaey-171" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Posicion" vertex="1">
+        <mxCell id="9c8PT9vNgFuJtXoBoaey-171" parent="WIyWlLk6GJQsqaUBKTNV-1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" value="&lt;&lt;enumeration&gt;&gt;&#xa;Enums.Posicion" vertex="1">
           <mxGeometry height="120" width="160" x="1770" y="1750" as="geometry">
             <mxRectangle height="26" width="160" x="130" y="380" as="alternateBounds" />
           </mxGeometry>
