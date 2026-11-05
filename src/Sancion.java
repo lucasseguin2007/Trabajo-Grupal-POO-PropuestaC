@@ -1,3 +1,4 @@
+import Enums.MotivoSancion;
 import java.time.LocalDate;
 
 public class Sancion {
@@ -7,20 +8,18 @@ public class Sancion {
     private MotivoSancion motivo;
     private JugadorPlantel jugador;
     private Club club;
-    private Torneo torneo;
 
-    public Sancion(int fechasSuspension, MotivoSancion motivo, JugadorPlantel jugador, Club club, Torneo torneo) {
+    public Sancion(int fechasSuspension, MotivoSancion motivo, JugadorPlantel jugador, Club club) {
         if (fechasSuspension <= 0) {
             throw new IllegalArgumentException("La fecha de suspension debe ser mayor a 0");
         }
-        if (jugador == null || motivo == null || club == null || torneo == null) {
+        if (jugador == null || motivo == null || club == null) {
             throw new IllegalArgumentException("No se admiten valores nulos");
         }
         this.fechasSuspension = fechasSuspension;
         this.motivo = motivo;
         this.jugador = jugador;
         this.club = club;
-        this.torneo = torneo;
         fechaRegistro = LocalDate.now();
         fechasCumplidas = 0;
     }
@@ -37,7 +36,7 @@ public class Sancion {
         return fechasSuspension;
     }
 
-    public Jugador getJugador() {
+    public JugadorPlantel getJugador() {
         return jugador;
     }
 
@@ -45,9 +44,6 @@ public class Sancion {
         return club;
     }
 
-    public Torneo getTorneo() {
-        return torneo;
-    }
 
     public MotivoSancion getMotivo() {
         return motivo;

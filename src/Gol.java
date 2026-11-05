@@ -1,3 +1,5 @@
+import Enums.TipoGol;
+
 public class Gol extends Evento {
     private TipoGol tipo;
 

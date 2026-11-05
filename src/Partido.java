@@ -1,3 +1,7 @@
+import Enums.EstadoPartido;
+import Enums.RolEquipo;
+import Enums.TipoGol;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,7 +9,6 @@ import java.util.List;
 public class Partido {
     private Club local;
     private Club visitante;
-    private Torneo torneo;
     private Estadio estadio;
     private TernaArbitral ternaArbitral;
     private List<Evento> eventos;
@@ -15,18 +18,17 @@ public class Partido {
     private int golesVisitantes;
     private List<NominaPartido> nominas;
 
-    public Partido(Estadio estadio, LocalDateTime fechaHora, Club local, Club visitante, Torneo torneo, TernaArbitral ternaArbitral) {
+    public Partido(Estadio estadio, LocalDateTime fechaHora, Club local, Club visitante, TernaArbitral ternaArbitral) {
         if (local == null || visitante == null || local.equals(visitante)) {
             throw new IllegalArgumentException("Los clubes deben existir y ser distintos");
         }
-        if (estadio == null || fechaHora == null || torneo == null || ternaArbitral == null) {
+        if (estadio == null || fechaHora == null || ternaArbitral == null) {
             throw new IllegalArgumentException("El partido debe tener estadio, fecha, torneo y terna arbitral.");
         }
         this.estadio = estadio;
         this.fechaHora = fechaHora;
         this.local = local;
         this.visitante = visitante;
-        this.torneo = torneo;
         this.ternaArbitral = ternaArbitral;
         golesLocal = 0;
         golesVisitantes = 0;
@@ -62,10 +64,6 @@ public class Partido {
 
     public LocalDateTime getFechaHora() {
         return fechaHora;
-    }
-
-    public Torneo getTorneo() {
-        return torneo;
     }
 
     public boolean agregarNomina(NominaPartido nomina) {
@@ -159,8 +157,10 @@ public class Partido {
         return registrarEvento(roja);
     }
 
-    public boolean registrarCambio() {
+    public boolean registrarCambio(int minuto, String jugadorSale, String jugadorEntra) {
+        if (estado.equals(EstadoPartido.EN_JUEGO) {
 
+        }
     }
 
     public boolean estaConvocadoEnPartido(Jugador jugador) {
@@ -224,5 +224,20 @@ public class Partido {
             }
         }
         return enCancha;
+    }
+
+    private boolean yaFueSustituido(Jugador jugador) {
+        if (jugador == null) {
+            return false;
+        }
+        for (Evento evento: eventos) {
+            if (evento instanceof Cambio) {
+                Cambio cambio = (Cambio) evento;
+                if (cambio.getJugador().equals(jugador)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
