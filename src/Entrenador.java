@@ -1,3 +1,5 @@
+import Enums.EspecialidadEntrenador;
+
 import java.time.LocalDate;
 
 public class Entrenador extends Persona {

@@ -8,4 +8,4 @@ CAMBIOS REALIZADOS
 5. Se mantuvo en Remate el método calcularXG(), ya que cada remate sabe la zona donde se realizó y dispones la información necesaria para realizar dicho cálculo.
 6. Se mantuvo en Partido la responsabilidad de generar y registrar los eventos de anulación. Esto es debido a que el partido contiene el historial de eventos al que pertenece la anulación.
 7. Se evitó vincular la clase Partido directamente con los canales de comunicación. Toda esa responsabilidad se realiza mediante ControladorPartidos y ServicioNotificaciones.
-8. También el enum EstadoEnvio pasó a utilizarse en EnvioNotificacion y se eliminó CanalNotificacion debido a que los distintos canales se representan mediante clases que implementan CanalEnvio.
+8. También el enum Enums.EstadoEnvio pasó a utilizarse en EnvioNotificacion y se eliminó Enums.CanalNotificacion debido a que los distintos canales se representan mediante clases que implementan CanalEnvio.

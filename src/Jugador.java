@@ -1,5 +1,6 @@
+import Enums.Posicion;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Jugador extends Persona{
     private Posicion posicion;
@@ -9,6 +10,7 @@ public class Jugador extends Persona{
     private int tarjetasAmarillas;
     private int tarjetasRojas;
     private List<Sancion> sanciones;
+    private Contrato contratos[];
 
     public Jugador(int dni, String nombre, String apellido, LocalDate fechaNacimiento, int goles, int partidosJugados, int tarjetasAmarillas, int tarjetasRojas, Posicion posicion, double valorMercado) {
         super(dni, nombre, apellido, fechaNacimiento);
@@ -22,6 +24,7 @@ public class Jugador extends Persona{
         this.posicion = posicion;
         this.valorMercado = valorMercado;
         this.sanciones = new List<Sancion>();
+        this.contratos = new Contrato[20];
     }
 
     //Getters and Setters
