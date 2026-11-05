@@ -37,4 +37,8 @@ public void anotarInscripcion(InscripcionTorneo it){
     }
     System.out.println("Máximo de torneos alcanzado");
 }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 }
