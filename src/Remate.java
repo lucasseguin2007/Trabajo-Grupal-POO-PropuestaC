@@ -1,3 +1,5 @@
+import Enums.ZonaRemate;
+
 public class Remate extends Evento {
     private ZonaRemate zona;
 
