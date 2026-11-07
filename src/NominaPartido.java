@@ -51,9 +51,20 @@ public class NominaPartido {
         return jugadoresTitulares.contains(jugador);
     }
 
+    public boolean esSuplente(Jugador jugador) {
+        return jugadoresSuplentes.contains(jugador);
+    }
+
     public boolean agregarSuplente(Jugador jugador) {
         if (jugador != null && !estaConvocado(jugador)) {
             jugadoresSuplentes.add(jugador);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tieneFormacionCompleta() {
+        if (jugadoresTitulares.size() == 11) {
             return true;
         }
         return false;
