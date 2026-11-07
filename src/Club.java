@@ -6,14 +6,14 @@ import java.util.Date;
 public class Club {
     private String nombre;
     private Date fechaFundacion;
-    private InscripcionTorneo inscriptos[];
+    private InscripcionTorneo inscripcion;
     private Jugador jugadores[];
     private Estadio estadio;
 
-public Club(String nombre, Date fechaFundacion, InscripcionTorneo[] inscriptos, Jugador[] jugadores, Estadio estadio) {
+public Club(String nombre, Date fechaFundacion, InscripcionTorneo inscripcion, Jugador[] jugadores, Estadio estadio) {
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
-        this.inscriptos = new InscripcionTorneo[2];
+        this.inscripcion = inscripcion;
         this.jugadores = new Jugador[50];
         this.estadio = estadio;
     }
@@ -27,14 +27,9 @@ public void agregarJugador(int dni, String nombre, String apellido, LocalDate fe
     }
 }
 public void anotarInscripcion(InscripcionTorneo it){
-    if (inscriptos.length < 2){
-        for (int i = 0; i < inscriptos.length ; i++) {
-            if (inscriptos[i] == null){
-                inscriptos[i] = it;
+    if (inscripcion == null){
+                inscripcion = it;
             }
-            return;
-        }
-    }
     System.out.println("Máximo de torneos alcanzado");
 }
 

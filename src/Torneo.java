@@ -16,4 +16,27 @@ public class Torneo {
         this.estado = estado;
         this.inscriptos = new InscripcionTorneo[30];
     }
+
+    public boolean iniciarTorneo(){
+        if ((estado == EstadoTorneo.EN_CURSO)||(estado == EstadoTorneo.FINALIZADO)){
+            return false;
+        }
+        estado = EstadoTorneo.EN_CURSO;
+        return true;
+    }
+
+    public void finalizarTorneo(){
+        if (estado == EstadoTorneo.EN_CURSO){
+            estado = EstadoTorneo.FINALIZADO;
+        }
+    }
+
+    public List<Partido> generarFixture(){
+        for (int i = 0; i < inscriptos.length; i++) {
+            for (int j = 0; j < ; j++) {
+                inscriptos[i].getC().getNombre()
+            }
+        }
+    }
+
 }

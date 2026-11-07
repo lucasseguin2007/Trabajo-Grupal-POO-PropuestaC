@@ -9,4 +9,3 @@ public class JugadorPlantel {
         this.jugador = jugador;
     }
 }
-
