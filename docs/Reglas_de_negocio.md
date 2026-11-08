@@ -2,7 +2,7 @@
 REGLAS DE NEGOCIO
 ===============================================================================
 
-Torneos y estadios
+torneos y estadios
 ------------------
 * Un torneo tiene nombre, fecha de inicio, fecha de fin y un estado: planificado, en curso o finalizado.
 * Solo se puede pasar de un estado al siguiente, y un torneo no puede iniciarse con menos de 4 clubes inscriptos.
@@ -11,7 +11,7 @@ Torneos y estadios
 * Un estadio tiene un nombre, una capacidad, una dirección (calle, número, ciudad y provincia) y una lista de condiciones habituales (clima o tipo de césped).
 * Un estadio no puede alojar dos partidos con menos de 3 horas de diferencia.
 
-Clubes, plantel y personas
+clubes, plantel y personas
 --------------------------
 * Un club tiene nombre, fecha de fundación y sede social, y puede participar en varios torneos a lo largo del tiempo, pero una sola vez en cada uno.
 * El plantel de un club en un torneo tiene entre 18 y 30 jugadores.
@@ -23,7 +23,7 @@ Clubes, plantel y personas
 * Un árbitro no puede dirigir a un club del que sea hincha declarado.
 * Un arbitro no puede ser asignado a más de un partido el mismo día
 
-Partidos y eventos
+partidos y eventos
 ------------------
 * Un partido enfrenta a dos clubes distintos (local y visitante) en una fecha, en un estadio y con una terna de tres árbitros: un principal y dos asistentes.
 * Estados del partido: programado, en juego, finalizado y suspendido.
@@ -44,7 +44,7 @@ Sanciones
 * Una roja directa implica 1 fecha de suspensión.
 * Un jugador suspendido no puede ser incorporado a la nómina del partido en el que se deba cumplir la sanción.
 
-Notificaciones
+notificaciones
 --------------
 * Se notifica a los suscriptores cuando hay un gol, una tarjeta roja o el final del partido.
 * Toda notificación debe identificar el partido, el minuto y el evento.
@@ -52,7 +52,7 @@ Notificaciones
 * Si un canal falla, el sistema lo registra y sigue con los demás: un fallo en el envío no puede frenar la carga del partido.
 * Debe poder incorporarse un canal nuevo (por ejemplo, mensería instantánea) sin modificar la lógica de los partidos.
 
-Patrocinios
+patrocinios
 -----------
 * Un sponsor tiene nombre, marca y logo, y puede patrocinar a varios clubes y torneos al mismo tiempo.
 * Cada patrocinio tiene un monto, una fecha de inicio y una de fin, y solo puede estar vigente uno por sponsor y destinatario.
