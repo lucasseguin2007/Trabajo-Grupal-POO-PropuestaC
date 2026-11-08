@@ -18,6 +18,8 @@ public class Suscriptor {
         this.clubes = new ArrayList<>();
     }
 
+
+
     public void seguirClub(Club club){
         if (club == null) {
             throw new IllegalArgumentException("El club no existe");

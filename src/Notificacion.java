@@ -1,3 +1,4 @@
+import Enums.CanalNotificacion;
 import Enums.EstadoEnvio;
 import Enums.TipoNotificacion;
 
@@ -9,9 +10,9 @@ public class Notificacion {
     private String descripcion;
     private Date fechaEnvio;
     private EstadoEnvio estadoEnvio;
-    private CanalNotificaion canal;
+    private CanalNotificacion canal;
 
-    public Notificacion(int minuto, TipoNotificacion tipo, String descripcion, Date fechaEnvio, EstadoEnvio estadoEnvio, CanalNotificaion canal) {
+    public Notificacion(int minuto, TipoNotificacion tipo, String descripcion, Date fechaEnvio, EstadoEnvio estadoEnvio, CanalNotificacion canal) {
         this.minuto = minuto;
         this.tipo = tipo;
         this.descripcion = descripcion;
@@ -20,7 +21,7 @@ public class Notificacion {
         this.canal = canal;
     }
 
-    public boolean enviar(){
+    public boolean enviar() {
 
     }
 }
