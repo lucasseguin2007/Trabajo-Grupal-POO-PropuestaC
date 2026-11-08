@@ -308,7 +308,7 @@ Objetivo: Dar como terminado el partido
 Actor principal: Operador del partido
 
 Precondiciones:
-1. Partido en curso
+1. partidos.Partido en curso
 
 Flujo principal:
 Paso 1: El operador ingresa a “Terminar partido”
@@ -330,7 +330,7 @@ Objetivo: Tener registrado el resultado del partido
 Actor principal: Operador del partido
 
 Precondiciones:
-1. Partido en curso
+1. partidos.Partido en curso
 
 Flujo principal:
 Paso 1: Operador del partido registra un evento
@@ -369,7 +369,7 @@ Notas: Hay dos posibles actores principales, el analista y el suscriptor. Por lo
 CASO DE USO: CU-15 - Consultar fixture
 ================================================================================
 Objetivo: Presentarle al suscriptor el fixture completo de un torneo
-Actor principal: Suscriptor
+Actor principal: notificaciones.Suscriptor
 
 Precondiciones:
 1. El torneo debe haber iniciado
@@ -395,7 +395,7 @@ Notas: -
 CASO DE USO: CU-16 - Consultar notificaciones
 ================================================================================
 Objetivo: Presentarle a el suscriptor todas las notificaciones que tiene sin leer
-Actor principal: Suscriptor
+Actor principal: notificaciones.Suscriptor
 
 Precondiciones:
 1. El suscriptor debe tener suscripciones activas
@@ -421,7 +421,7 @@ Objetivo: Tener registrado las tarjetas de cada partido
 Actor principal: Operador del partido
 
 Precondiciones:
-1. Partido en curso
+1. partidos.Partido en curso
 
 Flujo principal:
 Paso 1: El operador del partido registra un evento
@@ -448,7 +448,7 @@ Objetivo: Tener registrado los cambios del partido
 Actor principal: Operador del partido
 
 Precondiciones:
-1. Partido en curso
+1. partidos.Partido en curso
 
 Flujo principal:
 Paso 1: Operador del partido registra un evento
