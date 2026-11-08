@@ -4,14 +4,14 @@ public class Contrato {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double sueldo;
-    private String nombreClub;
+    private Club club;
     private boolean estado;
 
-    public Contrato(LocalDate fechaInicio, LocalDate fechaFin, double sueldo, String nombreClub) {
+    public Contrato(LocalDate fechaInicio, LocalDate fechaFin, double sueldo, Club club) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.sueldo = sueldo;
-        this.nombreClub = nombreClub;
+        this.club = club;
         this.estado = true;
     }
 
