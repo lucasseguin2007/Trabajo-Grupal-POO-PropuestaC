@@ -3,9 +3,10 @@ package torneos;
 import clubes.Club;
 import enums.MotivoSancion;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Sancion {
+public class Sancion implements Serializable {
     private int fechasSuspension;
     private int fechasCumplidas;
     private LocalDate fechaRegistro;

@@ -9,14 +9,13 @@ public class GestorContratos {
         if (jugador == null || club == null || fechaInicio == null || fechaFin == null) {
             return false;
         }
-        if (fechaFin.isBefore(LocalDate.now())) {
+        if (fechaInicio.isAfter(LocalDate.now()) || fechaFin.isBefore(LocalDate.now())) {
             return false;
         }
         if (fechaFin.isBefore(fechaInicio) || sueldo < 0) {
             return false;
         }
         Contrato contrato = new Contrato(fechaInicio, fechaFin, sueldo, club);
-
         if (!jugador.agregarContrato(contrato)) {
             return false;
         }
@@ -50,7 +49,7 @@ public class GestorContratos {
         if (clubOrigen == clubDestino) {
             return false;
         }
-        LocalDate inicioNuevo = LocalDate.now().plusDays(1);
+        LocalDate inicioNuevo = LocalDate.now();
         if (fechaFinNueva.isBefore(inicioNuevo)) {
             return false;
         }

@@ -2,7 +2,9 @@ package eventos;
 
 import personas.Jugador;
 
-public abstract class Evento {
+import java.io.Serializable;
+
+public abstract class Evento implements Serializable {
     private int minuto;
     private Jugador jugador;
 

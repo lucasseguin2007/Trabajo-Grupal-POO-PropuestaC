@@ -3,9 +3,10 @@ package torneos;
 import clubes.Club;
 import personas.Jugador;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class InscripcionTorneo {
+public class InscripcionTorneo implements Serializable {
     private LocalDate fechaInscripcion;
     private Plantel plantel;
     private Club club;

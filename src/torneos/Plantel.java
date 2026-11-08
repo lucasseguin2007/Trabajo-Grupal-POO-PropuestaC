@@ -4,10 +4,11 @@ import clubes.Club;
 import clubes.Contrato;
 import personas.Jugador;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Plantel {
+public class Plantel implements Serializable {
     private List<JugadorPlantel> jugadoresPlantel;
 //metodo constructor
     public Plantel() {
@@ -64,5 +65,30 @@ public class Plantel {
             }
         }
         return false;
+    }
+
+    public boolean estaInscripto(Jugador jugador) {
+        if (jugador == null) {
+            return false;
+        }
+
+        for (JugadorPlantel jp: jugadoresPlantel) {
+            if (jp.getJugador().equals(jugador)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public JugadorPlantel buscarJugador(Jugador jugador) {
+        if (jugador == null) {
+            return null;
+        }
+        for (JugadorPlantel jp : jugadoresPlantel) {
+            if (jp.getJugador().equals(jugador)) {
+                return jp;
+            }
+        }
+        return null;
     }
 }

@@ -15,4 +15,21 @@ public class Sponsor {
         this.logo = logo;
         this.patrocinios = new ArrayList<>();
     }
+    public List<Patrocinio> getPatrocinios() {
+        return new ArrayList<>(patrocinios);
+    }
+
+    public boolean agregarPatrocinio(Patrocinio patrocinio) {
+        if (patrocinio == null){
+            return false;
+        }
+        if (patrocinio.getSponsor() != this) {
+            return false;
+        }
+        if (patrocinios.contains(patrocinio)) {
+            return false;
+        }
+        patrocinios.add(patrocinio);
+        return true;
+    }
 }

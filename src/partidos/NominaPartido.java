@@ -3,11 +3,13 @@ package partidos;
 import clubes.Club;
 import enums.RolEquipo;
 import personas.Jugador;
+import torneos.JugadorPlantel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NominaPartido {
+public class NominaPartido implements Serializable {
     private RolEquipo rol;
     private Club club;
     private List<Jugador> jugadoresTitulares;
@@ -43,9 +45,13 @@ public class NominaPartido {
         return jugadoresTitulares.contains(jugador) || jugadoresSuplentes.contains(jugador);
     }
 
-    public boolean agregarTitular (Jugador jugador) {
-        if (jugador != null && !estaConvocado(jugador) && jugadoresTitulares.size() < 11 ){
-            jugadoresTitulares.add(jugador);
+    public boolean agregarTitular (JugadorPlantel jugador) {
+        if (!puedeConvocarse(jugador)) {
+            return false;
+        }
+        Jugador jugador1 = jugador.getJugador();
+        if (!estaConvocado(jugador1) && jugadoresTitulares.size() < 11) {
+            jugadoresTitulares.add(jugador1);
             return true;
         }
         return false;
@@ -59,9 +65,13 @@ public class NominaPartido {
         return jugadoresSuplentes.contains(jugador);
     }
 
-    public boolean agregarSuplente(Jugador jugador) {
-        if (jugador != null && !estaConvocado(jugador)) {
-            jugadoresSuplentes.add(jugador);
+    public boolean agregarSuplente(JugadorPlantel jugador) {
+        if (!puedeConvocarse(jugador)) {
+            return false;
+        }
+        Jugador jugador1 = jugador.getJugador();
+        if (!estaConvocado(jugador1)) {
+            jugadoresSuplentes.add(jugador1);
             return true;
         }
         return false;
@@ -72,5 +82,12 @@ public class NominaPartido {
             return true;
         }
         return false;
+    }
+
+    public boolean puedeConvocarse(JugadorPlantel jugadorPlantel) {
+        if (jugadorPlantel == null) {
+            return false;
+        }
+        return !jugadorPlantel.estaSuspendido();
     }
 }

@@ -1,19 +1,25 @@
 package torneos;
 
 import clubes.Club;
+import enums.EstadoPartido;
 import enums.EstadoTorneo;
+import enums.MotivoSancion;
+import enums.RolEquipo;
+import eventos.Evento;
+import eventos.TarjetaRoja;
 import partidos.Estadio;
 import partidos.Partido;
-import partidos.TernaArbitral;
 import personas.Arbitro;
+import personas.Jugador;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Torneo {
+public class Torneo implements Serializable {
     private String nombre;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -40,6 +46,14 @@ public class Torneo {
     }
 
     //getter
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public EstadoTorneo getEstado() {
+        return estado;
+    }
     public List<InscripcionTorneo> getInscriptos() {
         return new ArrayList<>(inscriptos);
     }
@@ -80,6 +94,18 @@ public class Torneo {
                 return false;
             }
         }
+        int cantidadClubes = inscriptos.size();
+        int partidosEsperados = cantidadClubes * (cantidadClubes-1);
+
+        if (partidos.size() != partidosEsperados) {
+            return false;
+        }
+
+        for (Partido partido: partidos) {
+            if (!partido.estaCompletamenteProgramado()) {
+                return false;
+            }
+        }
 
         for (InscripcionTorneo inscripcion: inscriptos) {
             inscripcion.bloquearPlantel();
@@ -89,10 +115,52 @@ public class Torneo {
         return true;
     }
 
-    public void finalizarTorneo() {
-        if (estado == EstadoTorneo.EN_CURSO) {
-            estado = EstadoTorneo.FINALIZADO;
+    public boolean finalizarTorneo() {
+        if (estado != EstadoTorneo.EN_CURSO) {
+            return false;
         }
+        if (partidos.isEmpty()) {
+            return false;
+        }
+        for (Partido partido : partidos) {
+            if (partido.getEstado() != EstadoPartido.FINALIZADO) {
+                return false;
+            }
+        }
+        estado = EstadoTorneo.FINALIZADO;
+        return true;
+    }
+
+    public boolean finalizarPartido(Partido partido) {
+        if (partido == null || !partidos.contains(partido)) {
+            return false;
+        }
+        if (partido.getEstado() != EstadoPartido.EN_JUEGO) {
+            return false;
+        }
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            Club club = inscripcion.getClub();
+            if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
+                continue;
+            }
+            for (JugadorPlantel jp: inscripcion.getPlantel().getJugadoresPlantel()) {
+                jp.cumplirFechaSuspension();
+            }
+        }
+        partido.finalizar();
+        for (Evento evento : partido.getEventos()) {
+            if (evento instanceof TarjetaRoja) {
+                for (InscripcionTorneo inscripcion : inscriptos) {
+                    JugadorPlantel jp = inscripcion.getPlantel().buscarJugador(evento.getJugador());
+                    if (jp != null) {
+                        Sancion sancion = new Sancion(1, MotivoSancion.EXPULSION,jp,inscripcion.getClub());
+                        jp.agregarSancion(sancion);
+                        break;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     public List<Partido> generarFixture() {
@@ -147,7 +215,7 @@ public class Torneo {
         return new ArrayList<>(partidos);
     }
 
-    public boolean programarPartido(Partido partido, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
+    public boolean puedeProgramarPartido(Partido partido, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
         if (estado != EstadoTorneo.PLANIFICADO) {
             return false;
         }
@@ -171,7 +239,14 @@ public class Torneo {
         if (!arbitrosDisponibles(partido,fechaHora,arbitro1,arbitro2,arbitro3)) {
             return false;
         }
-        return partido.programarPartido(fechaHora, estadio, arbitro1, arbitro2, arbitro3);
+        return true;
+    }
+
+    public boolean programarPartido(Partido partido, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
+        if (partido == null) {
+            return false;
+        }
+        return partido.programarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3);
     }
 
     private boolean tieneDescanso(Partido partido, LocalDateTime nuevaFecha) {
@@ -251,6 +326,86 @@ public class Torneo {
             }
         }
         return true;
+    }
+
+    public boolean jugadorInscripto(Partido partido, RolEquipo rol, Jugador jugador) {
+        if (partido == null || rol == null || jugador == null) {
+            return false;
+        }
+        if (!partidos.contains(partido)) {
+            return false;
+        }
+        Club club;
+        if (rol == RolEquipo.LOCAL) {
+            club = partido.getLocal();
+        } else {
+            club = partido.getVisitante();
+        }
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            if (inscripcion.getClub().equals(club)) {
+                return inscripcion.estaConfirmada()
+                        && inscripcion.getPlantel().estaInscripto(jugador);
+            }
+        }
+        return false;
+    }
+
+    public boolean convocarTitular(Partido partido, RolEquipo rol, JugadorPlantel jugador) {
+        if (partido == null || rol == null || jugador == null) {
+            return false;
+        }
+
+        if (!jugadorInscripto(partido, rol, jugador.getJugador())) {
+            return false;
+        }
+        boolean perteneceAlPlantel = false;
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            Club club = inscripcion.getClub();
+            if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
+                continue;
+            }
+            if (inscripcion.getPlantel().buscarJugador(jugador.getJugador()) == jugador) {
+                perteneceAlPlantel = true;
+                break;
+            }
+        }
+        if (!perteneceAlPlantel) {
+            return false;
+        }
+
+        if (jugador.estaSuspendido()) {
+            return false;
+        }
+        return partido.agregarTitular(rol, jugador);
+    }
+
+    public boolean convocarSuplente(Partido partido, RolEquipo rol, JugadorPlantel jugador) {
+        if (partido == null || rol == null || jugador == null) {
+            return false;
+        }
+
+        if (!jugadorInscripto(partido, rol, jugador.getJugador())) {
+            return false;
+        }
+        boolean perteneceAlPlantel = false;
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            Club club = inscripcion.getClub();
+            if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
+                continue;
+            }
+            if (inscripcion.getPlantel().buscarJugador(jugador.getJugador()) == jugador) {
+                perteneceAlPlantel = true;
+                break;
+            }
+        }
+        if (!perteneceAlPlantel) {
+            return false;
+        }
+
+        if (jugador.estaSuspendido()) {
+            return false;
+        }
+        return partido.agregarSuplente(rol, jugador);
     }
 
 }

@@ -1,5 +1,7 @@
 package reportes;
 
+import clubes.Club;
+
 public class PosicionTorneo {
     private int partidosJugados;
     private int partidosGanados;
@@ -8,8 +10,13 @@ public class PosicionTorneo {
     private int golesAFavor;
     private int golesEnContra;
     private int puntos;
+    private Club club;
 
-    public PosicionTorneo(int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesAFavor, int golesEnContra, int puntos) {
+    public PosicionTorneo(Club club) {
+        if (club == null) {
+            throw new IllegalArgumentException("El club no puede ser nulo");
+        }
+        this.club = club;
         this.partidosJugados = 0;
         this.partidosGanados = 0;
         this.partidosEmpatados = 0;
@@ -19,7 +26,59 @@ public class PosicionTorneo {
         this.puntos = 0;
     }
 
-    public int calcularDiferenciaGol(){
+    public Club getClub() {
+        return club;
+    }
+
+    public int getGolesAFavor() {
+        return golesAFavor;
+    }
+
+    public int getGolesEnContra() {
+        return golesEnContra;
+    }
+
+    public int getPartidosEmpatados() {
+        return partidosEmpatados;
+    }
+
+    public int getPartidosGanados() {
+        return partidosGanados;
+    }
+
+    public int getPartidosJugados() {
+        return partidosJugados;
+    }
+
+    public int getPartidosPerdidos() {
+        return partidosPerdidos;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void registrarResultado(int golesPropios, int golesRivales) {
+        if (golesPropios < 0 || golesRivales < 0) {
+            throw new IllegalArgumentException(
+                    "Los goles no pueden ser negativos"
+            );
+        }
+        partidosJugados++;
+
+        golesAFavor += golesPropios;
+        golesEnContra += golesRivales;
+        if (golesPropios > golesRivales) {
+            partidosGanados ++;
+            puntos += 3;
+        } else if (golesPropios == golesRivales) {
+            partidosEmpatados++;
+            puntos++;
+        } else {
+            partidosPerdidos ++;
+        }
+    }
+    public int calcularDiferenciaGol() {
         return golesAFavor - golesEnContra;
     }
 }

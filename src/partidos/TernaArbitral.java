@@ -2,7 +2,9 @@ package partidos;
 
 import personas.Arbitro;
 
-public class TernaArbitral {
+import java.io.Serializable;
+
+public class TernaArbitral implements Serializable {
     private Arbitro arbitros[];
 
     public TernaArbitral() {

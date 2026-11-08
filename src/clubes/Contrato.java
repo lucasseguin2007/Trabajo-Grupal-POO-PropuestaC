@@ -1,8 +1,9 @@
 package clubes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Contrato {
+public class Contrato implements Serializable {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private double sueldo;
@@ -17,6 +18,9 @@ public class Contrato {
         }
         if (fechaFin.isBefore(fechaInicio)){
             throw new IllegalArgumentException("La fecha de finalización no puede ser anterior al inicio");
+        }
+        if (fechaInicio.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("No se pueden registrar contratos futuros");
         }
         if (sueldo < 0) {
             throw new IllegalArgumentException("El sueldo no puede ser negativo");
@@ -78,13 +82,13 @@ public class Contrato {
         }
         LocalDate finEfectivo;
         if (!estado) {
-            finEfectivo = fechaRescision;
+            finEfectivo = fechaRescision = fechaRescision.minusDays(1);
         } else {
             finEfectivo = fechaFin;
         }
         LocalDate finOtro;
         if (!otro.estado) {
-            finOtro = otro.fechaRescision;
+            finOtro = otro.fechaRescision.minusDays(1);
         } else {
             finOtro = otro.fechaFin;
         }

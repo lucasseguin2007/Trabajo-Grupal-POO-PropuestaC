@@ -10,15 +10,35 @@ public class Suscriptor {
     private String nombre;
     private String correo;
     private String telefono;
-    private List<CanalNotificacion> canales;
+    private List<CanalEnvio> canales;
     private List<Club> clubes;
 
-    public Suscriptor(String nombre, String correo, String telefono, List<CanalNotificacion> canalNotificaciones) {
+    public Suscriptor(String nombre, String correo, String telefono) {
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.canales = new ArrayList<>();
         this.clubes = new ArrayList<>();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public List<CanalEnvio> getCanales() {
+        return new ArrayList<>(canales);
+    }
+
+    public List<Club> getClubes() {
+        return new ArrayList<>(clubes);
     }
 
     public void seguirClub(Club club){
@@ -37,33 +57,18 @@ public class Suscriptor {
         clubes.remove(club);
     }
 
-    public void configurarCanal(CanalNotificacion canal){
+    public boolean configurarCanal(CanalEnvio canal){
         if (canal == null) {
-            throw new IllegalArgumentException("El canal no existe");
+            return false;
         }
-        switch (canal){
-            case SMS:
-                if (telefono == null) {
-                    throw new IllegalStateException("No se puede configurar SMS sin teléfono");
-                }
-
-            case CORREO_PRENSA:
-                if (correo == null || correo.contains(" ")) {
-                    throw new IllegalStateException("No se puede configurar correo sin una dirección");
-                }
-                break;
-
-            case APP_MOVIL:
-                break;
+        for (CanalEnvio existente : canales) {
+            if (existente.getClass() == canal.getClass()) {
+                return false;
+            }
         }
-        if (!canales.contains(canal)){
-            canales.add(canal);
-        }
-
+        canales.add(canal);
+        return true;
 
     }
-
-
-
 
 }

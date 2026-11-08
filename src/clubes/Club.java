@@ -3,11 +3,12 @@ package clubes;
 import partidos.Estadio;
 import personas.Jugador;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Club {
+public class Club implements Serializable {
     private String nombre;
     private LocalDate fechaFundacion;
     private List<Jugador> jugadores;

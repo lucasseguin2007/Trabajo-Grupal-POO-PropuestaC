@@ -8,12 +8,15 @@ import enums.ZonaRemate;
 import eventos.*;
 import personas.Arbitro;
 import personas.Jugador;
+import torneos.Torneo;
+import torneos.JugadorPlantel;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Partido {
+public class Partido implements Serializable {
     private Club local;
     private Club visitante;
     private Estadio estadio;
@@ -23,23 +26,7 @@ public class Partido {
     private EstadoPartido estado;
     private List<NominaPartido> nominas;
     private int jornada;
-
-    public Partido(Estadio estadio, LocalDateTime fechaHora, Club local, Club visitante, TernaArbitral ternaArbitral) {
-        if (local == null || visitante == null || local.equals(visitante)) {
-            throw new IllegalArgumentException("Los clubes deben existir y ser distintos");
-        }
-        if (estadio == null || fechaHora == null || ternaArbitral == null) {
-            throw new IllegalArgumentException("El partido debe tener estadio, fecha, torneo y terna arbitral.");
-        }
-        this.estadio = estadio;
-        this.fechaHora = fechaHora;
-        this.local = local;
-        this.visitante = visitante;
-        this.ternaArbitral = ternaArbitral;
-        this.estado = EstadoPartido.PROGRAMADO;
-        this.eventos = new ArrayList<>();
-        this.nominas = new ArrayList<>();
-    }
+    //Metodo constructor
     public Partido(Club local, Club visitante, int jornada) {
         if (local == null || visitante == null || local.equals(visitante) ) {
             throw new IllegalArgumentException("Los clubes deben existir y ser distintos");
@@ -67,6 +54,10 @@ public class Partido {
         return estadio;
     }
 
+    public List<Evento> getEventos() {
+        return new ArrayList<>(eventos);
+    }
+
     public EstadoPartido getEstado() {
         return estado;
     }
@@ -87,44 +78,32 @@ public class Partido {
         return ternaArbitral;
     }
     //Metodos
-    public boolean programarPartido(
-            LocalDateTime fechaHora,
-            Estadio estadio,
-            Arbitro arbitro1,
-            Arbitro arbitro2,
-            Arbitro arbitro3) {
-
+        public boolean programarPartido(Torneo torneo, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
+        if (torneo == null) {
+            return false;
+        }
+        if (!torneo.puedeProgramarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3));
         if (estado != EstadoPartido.PROGRAMADO) {
             return false;
         }
-
-        if (fechaHora == null || estadio == null
-                || arbitro1 == null || arbitro2 == null || arbitro3 == null) {
+        if (fechaHora == null || estadio == null || arbitro1 == null || arbitro2 == null || arbitro3 == null) {
             return false;
         }
-
-        if (arbitro1 == arbitro2 || arbitro1 == arbitro3
-                || arbitro2 == arbitro3) {
+        if (arbitro1 == arbitro2 || arbitro1 == arbitro3 || arbitro2 == arbitro3) {
             return false;
         }
-
         TernaArbitral nuevaTerna = new TernaArbitral();
-
-        if (!nuevaTerna.agregarArbitro(arbitro1)
-                || !nuevaTerna.agregarArbitro(arbitro2)
-                || !nuevaTerna.agregarArbitro(arbitro3)) {
+        if (!nuevaTerna.agregarArbitro(arbitro1) || !nuevaTerna.agregarArbitro(arbitro2) || !nuevaTerna.agregarArbitro(arbitro3)) {
             return false;
         }
-
         this.fechaHora = fechaHora;
         this.estadio = estadio;
         this.ternaArbitral = nuevaTerna;
-
         return true;
     }
 
     public boolean estaCompletamenteProgramado() {
-        return fechaHora != null && estadio != null && ternaArbitral != null;
+        return fechaHora != null && estadio != null && ternaArbitral != null && ternaArbitral.estaCompleta();
     }
 
     public boolean agregarNomina(RolEquipo rol, Club club) {
@@ -150,17 +129,58 @@ public class Partido {
         return true;
     }
 
-    public boolean iniciar() {
-        if (estado == EstadoPartido.PROGRAMADO && ternaArbitral != null && nominas.size() == 2 && estado != null && fechaHora != null) {
-            for (NominaPartido nomina: nominas) {
-                if(!nomina.tieneFormacionCompleta()) {
+    public boolean agregarTitular (RolEquipo rol, JugadorPlantel jugador) {
+        if (estado != EstadoPartido.PROGRAMADO || rol == null || jugador == null) {
+            return false;
+        }
+        for (NominaPartido nomina: nominas) {
+            if (nomina.getRol() == rol) {
+                if (jugador.getJugador().obtenerContratoVigente() == null) {
                     return false;
                 }
+                if (jugador.getJugador().obtenerContratoVigente().getClub() != nomina.getClub()) {
+                    return false;
+                }
+                return nomina.agregarTitular(jugador);
             }
-            estado = EstadoPartido.EN_JUEGO;
-            return true;
         }
         return false;
+    }
+
+    public boolean agregarSuplente (RolEquipo rol, JugadorPlantel jugador) {
+        if (estado != EstadoPartido.PROGRAMADO || rol == null || jugador == null) {
+            return false;
+        }
+        for (NominaPartido nomina: nominas) {
+            if (nomina.getRol() == rol) {
+                if (jugador.getJugador().obtenerContratoVigente() == null) {
+                    return false;
+                }
+                if (jugador.getJugador().obtenerContratoVigente().getClub() != nomina.getClub()) {
+                    return false;
+                }
+                return nomina.agregarSuplente(jugador);
+            }
+        }
+        return false;
+    }
+    public boolean iniciar() {
+        if (estado != EstadoPartido.PROGRAMADO) {
+            return false;
+        }
+        if (!estaCompletamenteProgramado()) {
+            return false;
+        }
+        if (nominas.size() != 2) {
+            return false;
+        }
+         for (NominaPartido nomina: nominas) {
+             if(!nomina.tieneFormacionCompleta()){
+                return false;
+            }
+         }
+        estado = EstadoPartido.EN_JUEGO;
+        return true;
     }
 
     public void finalizar() {
@@ -176,10 +196,6 @@ public class Partido {
         }
         if (!estaConvocadoEnPartido(evento.getJugador())) {
             return false;
-        }
-        if (evento instanceof Gol) {
-            Gol gol = (Gol) evento;
-            actualizarMarcador(gol);
         }
         eventos.add(evento);
         return true;
@@ -324,22 +340,6 @@ public class Partido {
         return null;
     }
 
-    private void actualizarMarcador(Gol gol) {
-        Club club = obtenerClubJugador(gol.getJugador());
-        if (club == null) {
-            throw new IllegalArgumentException("El jugador no pertenece a ningún equipo");
-        }
-        if (gol.getTipo() == TipoGol.EN_CONTRA) {
-            if (club.equals(local)){
-            } else {
-            }
-        } else {
-            if (club.equals(local)) {
-            } else {
-            }
-        }
-    }
-
     public boolean estaEnCancha(Jugador jugador) {
         if (jugador == null || !estaConvocadoEnPartido(jugador)) {
             return false;
@@ -420,5 +420,82 @@ public class Partido {
             }
         }
         return false;
+    }
+    private int calcularGoles(Club club) {
+        int goles = 0;
+        for (Evento evento: eventos) {
+            if (evento instanceof  Gol) {
+                Gol gol = (Gol) evento;
+                if (estaAnulado(gol)) {
+                    continue;
+                }
+                Club clubJugador = obtenerClubJugador(gol.getJugador());
+                if (clubJugador == null ) {
+                    continue;
+                }
+
+                if (gol.getTipo() == TipoGol.EN_CONTRA) {
+                    if(!clubJugador.equals(club)) {
+                        goles ++;
+                    }
+                } else {
+                    if (clubJugador.equals(club)) {
+                        goles ++;
+                    }
+                }
+            }
+        }
+        return goles;
+    }
+
+    private boolean estaAnulado(Evento eventoOriginal) {
+        for (Evento evento: eventos) {
+            if (evento instanceof AnulacionEvento) {
+                AnulacionEvento anulacion = (AnulacionEvento) evento;
+                if (anulacion.getEventoOriginal() == eventoOriginal) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int getGolesLocal() {
+        return calcularGoles(local);
+    }
+
+    public int getGolesVisitante() {
+        return calcularGoles(visitante);
+    }
+
+    public boolean anularGol (Gol gol, String motivo) {
+        if (estado != EstadoPartido.EN_JUEGO) {
+            return false;
+        }
+        if (gol == null || motivo == null || motivo.isBlank()) {
+            return false;
+        }
+
+        if (!eventos.contains(gol)) {
+            return false;
+        }
+        if (estaAnulado(gol)) {
+            return false;
+        }
+        AnulacionEvento anulacion = new AnulacionEvento(gol,motivo);
+        return registrarEvento(anulacion);
+    }
+
+    public List<Gol> getGolesValido() {
+        List<Gol> goles = new ArrayList<>();
+        for (Evento evento: eventos) {
+            if (evento instanceof Gol) {
+                Gol gol = (Gol) evento;
+                if (!estaAnulado(gol)) {
+                    goles.add(gol);
+                }
+            }
+        }
+        return goles;
     }
 }

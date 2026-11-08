@@ -1,6 +1,8 @@
 package clubes;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion implements Serializable {
     private String calle;
     private int numero;
     private String ciudad;
@@ -11,5 +13,14 @@ public class Direccion {
         this.numero = numero;
         this.ciudad = ciudad;
         this.provincia = provincia;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "calle='" + calle + '\'' +
+                ", numero=" + numero +
+                ", ciudad='" + ciudad + '\'' +
+                ", provincia='" + provincia;
     }
 }
