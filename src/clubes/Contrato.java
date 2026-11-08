@@ -92,4 +92,9 @@ public class Contrato {
         return !fechaInicio.isAfter(finOtro) && !otro.fechaInicio.isAfter(finEfectivo);
     }
 
+    void deshacerRescision() {
+        estado = true;
+        fechaRescision = null;
+    }
+
 }

@@ -65,6 +65,7 @@ public class GestorContratos {
             return false;
         }
         if (!jugador.agregarContrato(contratoNuevo)) {
+            contratoActual.deshacerRescision();
             return false;
         }
         clubDestino.vincularJugador(jugador);

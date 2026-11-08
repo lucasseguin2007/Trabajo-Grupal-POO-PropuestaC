@@ -40,24 +40,12 @@ public class Club {
     }
 
     public List<Jugador> getJugadores() {
-        return jugadores;
+        return new ArrayList<>(jugadores);
     }
     // Metodos
 
     public boolean contieneJugador(Jugador jugador) {
         return jugadores.contains(jugador);
-    }
-
-    public boolean agregarJugador(Jugador jugador) {
-        if (jugador == null || jugadores.contains(jugador)) {
-            return false;
-        }
-        jugadores.add(jugador);
-        return true;
-    }
-
-    public boolean quitarJugador(Jugador jugador) {
-        return jugadores.remove(jugador);
     }
 
      boolean vincularJugador (Jugador jugador) {

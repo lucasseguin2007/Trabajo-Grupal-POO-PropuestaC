@@ -51,7 +51,7 @@ public class Jugador extends Persona {
     }
 
     public List<Contrato> getContratos() {
-        return contratos;
+        return new ArrayList<>(contratos);
     }
 
     //Metodos
