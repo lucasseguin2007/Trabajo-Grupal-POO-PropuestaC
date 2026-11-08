@@ -1,5 +1,6 @@
 package personas;
 
+import clubes.Club;
 import enums.CategoriaArbitro;
 
 import java.time.LocalDate;

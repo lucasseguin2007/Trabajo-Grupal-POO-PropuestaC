@@ -5,7 +5,8 @@ import enums.EstadoPartido;
 import enums.RolEquipo;
 import enums.TipoGol;
 import enums.ZonaRemate;
-import eventos.Cambio;
+import eventos.*;
+import personas.Arbitro;
 import personas.Jugador;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class Partido {
     private LocalDateTime fechaHora;
     private EstadoPartido estado;
     private List<NominaPartido> nominas;
+    private int jornada;
 
     public Partido(Estadio estadio, LocalDateTime fechaHora, Club local, Club visitante, TernaArbitral ternaArbitral) {
         if (local == null || visitante == null || local.equals(visitante)) {
@@ -38,22 +40,35 @@ public class Partido {
         this.eventos = new ArrayList<>();
         this.nominas = new ArrayList<>();
     }
+    public Partido(Club local, Club visitante, int jornada) {
+        if (local == null || visitante == null || local.equals(visitante) ) {
+            throw new IllegalArgumentException("Los clubes deben existir y ser distintos");
+        }
+        if (jornada < 1) {
+            throw new IllegalArgumentException("La jornada debe ser mayor a cero");
+        }
+        this.local =local;
+        this.visitante = visitante;
+        this.jornada = jornada;
+        this.estadio = null;
+        this.fechaHora = null;
+        this.ternaArbitral = null;
+        this.estado = EstadoPartido.PROGRAMADO;
+        this.eventos = new ArrayList<>();
+        this.nominas = new ArrayList<>();
+    }
 
     //Getters
+    public int getJornada() {
+        return jornada;
+    }
+
     public Estadio getEstadio() {
         return estadio;
     }
 
     public EstadoPartido getEstado() {
         return estado;
-    }
-
-    public int getGolesLocal() {
-        return golesLocal;
-    }
-
-    public int getGolesVisitantes() {
-        return golesVisitantes;
     }
 
     public Club getLocal() {
@@ -66,6 +81,50 @@ public class Partido {
 
     public LocalDateTime getFechaHora() {
         return fechaHora;
+    }
+
+    public TernaArbitral getTernaArbitral() {
+        return ternaArbitral;
+    }
+    //Metodos
+    public boolean programarPartido(
+            LocalDateTime fechaHora,
+            Estadio estadio,
+            Arbitro arbitro1,
+            Arbitro arbitro2,
+            Arbitro arbitro3) {
+
+        if (estado != EstadoPartido.PROGRAMADO) {
+            return false;
+        }
+
+        if (fechaHora == null || estadio == null
+                || arbitro1 == null || arbitro2 == null || arbitro3 == null) {
+            return false;
+        }
+
+        if (arbitro1 == arbitro2 || arbitro1 == arbitro3
+                || arbitro2 == arbitro3) {
+            return false;
+        }
+
+        TernaArbitral nuevaTerna = new TernaArbitral();
+
+        if (!nuevaTerna.agregarArbitro(arbitro1)
+                || !nuevaTerna.agregarArbitro(arbitro2)
+                || !nuevaTerna.agregarArbitro(arbitro3)) {
+            return false;
+        }
+
+        this.fechaHora = fechaHora;
+        this.estadio = estadio;
+        this.ternaArbitral = nuevaTerna;
+
+        return true;
+    }
+
+    public boolean estaCompletamenteProgramado() {
+        return fechaHora != null && estadio != null && ternaArbitral != null;
     }
 
     public boolean agregarNomina(RolEquipo rol, Club club) {
@@ -92,7 +151,7 @@ public class Partido {
     }
 
     public boolean iniciar() {
-        if (estado == EstadoPartido.PROGRAMADO && ternaArbitral != null || nominas.size() == 2) {
+        if (estado == EstadoPartido.PROGRAMADO && ternaArbitral != null && nominas.size() == 2 && estado != null && fechaHora != null) {
             for (NominaPartido nomina: nominas) {
                 if(!nomina.tieneFormacionCompleta()) {
                     return false;
@@ -272,15 +331,11 @@ public class Partido {
         }
         if (gol.getTipo() == TipoGol.EN_CONTRA) {
             if (club.equals(local)){
-                golesVisitantes++;
             } else {
-                golesLocal++;
             }
         } else {
             if (club.equals(local)) {
-                golesLocal++;
             } else {
-                golesVisitantes ++;
             }
         }
     }

@@ -10,7 +10,7 @@ public class InscripcionTorneo {
     private Plantel plantel;
     private Club club;
     private boolean confirmada;
-    private boolean bloqueada
+    private boolean bloqueada;
 
     public InscripcionTorneo(LocalDate fechaInscripcion, Club club) {
         if (fechaInscripcion == null || club == null) {

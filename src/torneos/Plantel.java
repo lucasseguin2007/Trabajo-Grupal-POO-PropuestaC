@@ -57,9 +57,9 @@ public class Plantel {
         if (jugador == null) {
             return false;
         }
-        for (JugadorPlantel jp: jugadoresPlantel) {
-            if (jp.getJugador().equals(jugador)) {
-                jugadoresPlantel.remove(jugador);
+        for (int i = 0; i<jugadoresPlantel.size(); i++) {
+            if (jugadoresPlantel.get(i).getJugador().equals(jugador)) {
+                jugadoresPlantel.remove(i);
                 return true;
             }
         }

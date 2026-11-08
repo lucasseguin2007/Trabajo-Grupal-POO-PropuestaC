@@ -1,44 +1,256 @@
 package torneos;
 
+import clubes.Club;
 import enums.EstadoTorneo;
+import partidos.Estadio;
+import partidos.Partido;
+import partidos.TernaArbitral;
+import personas.Arbitro;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Torneo {
     private String nombre;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private EstadoTorneo estado;
-    private InscripcionTorneo inscriptos[];
-
-    public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaFin, EstadoTorneo estado) {
+    private List<Partido> partidos;
+    private List<InscripcionTorneo> inscriptos;
+    //Metodo constructor
+    public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
+        if (fechaInicio == null || fechaFin == null) {
+            throw new IllegalArgumentException("Las fechas no pueden ser nulas");
+        }
+        if (!fechaFin.isAfter(fechaInicio)) {
+            throw new IllegalArgumentException("La fecha de finalización debe ser posterior a la de inicio");
+        }
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.estado = estado;
-        this.inscriptos = new InscripcionTorneo[30];
+        this.estado = EstadoTorneo.PLANIFICADO;
+        this.inscriptos = new ArrayList<>();
+        this.partidos = new ArrayList<>();
     }
 
-    public boolean iniciarTorneo(){
-        if ((estado == EstadoTorneo.EN_CURSO)||(estado == EstadoTorneo.FINALIZADO)){
+    //getter
+    public List<InscripcionTorneo> getInscriptos() {
+        return new ArrayList<>(inscriptos);
+    }
+    public List<Partido> getPartidos() {
+        return new ArrayList<>(partidos);
+    }
+
+    public boolean inscribirClub (Club club) {
+        if (club == null) {
             return false;
         }
+        if (estado != EstadoTorneo.PLANIFICADO) {
+            return false;
+        }
+
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            if (inscripcion.getClub().equals(club)) {
+                return false;
+            }
+        }
+        InscripcionTorneo nuevaInscripcion = new InscripcionTorneo(LocalDate.now(),club);
+        inscriptos.add(nuevaInscripcion);
+        return true;
+    }
+
+    public boolean iniciarTorneo() {
+        if (estado != EstadoTorneo.PLANIFICADO) {
+            return false;
+        }
+        if (inscriptos.size() < 4) {
+            return false;
+        }
+        for (InscripcionTorneo inscripcion: inscriptos) {
+            if (!inscripcion.estaConfirmada()) {
+                return false;
+            }
+            if (!inscripcion.getPlantel().tieneCantidadValida()) {
+                return false;
+            }
+        }
+
+        for (InscripcionTorneo inscripcion: inscriptos) {
+            inscripcion.bloquearPlantel();
+        }
+
         estado = EstadoTorneo.EN_CURSO;
         return true;
     }
 
-    public void finalizarTorneo(){
-        if (estado == EstadoTorneo.EN_CURSO){
+    public void finalizarTorneo() {
+        if (estado == EstadoTorneo.EN_CURSO) {
             estado = EstadoTorneo.FINALIZADO;
         }
     }
 
-    public List<Partido> generarFixture(){
-        for (int i = 0; i < inscriptos.length; i++) {
-            for (int j = 0; j < ; j++) {
-                inscriptos[i].getC().getNombre()
+    public List<Partido> generarFixture() {
+        if (estado != EstadoTorneo.PLANIFICADO) {
+            return new ArrayList<>();
+        }
+        if (!partidos.isEmpty() || inscriptos.size() < 4) {
+            return new ArrayList<>();
+        }
+        List<Club> clubes = new ArrayList<>();
+
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            if (!inscripcion.estaConfirmada() || !inscripcion.getPlantel().tieneCantidadValida()) {
+                return new ArrayList<>();
+            }
+            clubes.add(inscripcion.getClub());
+        }
+        if (clubes.size() % 2 != 0) {
+            clubes.add(null);
+        }
+
+        int cantidad = clubes.size();
+        int jornadasIda = cantidad -1;
+        int partidosPorJornada = cantidad /2;
+        List<Partido> ida = new ArrayList<>();
+        List<Partido> vuelta = new ArrayList<>();
+        for (int jornada = 1; jornada <= jornadasIda; jornada++) {
+            for (int i = 0; i < partidosPorJornada; i++) {
+                Club equipo1 = clubes.get(i);
+                Club equipo2 = clubes.get(cantidad-1-i);
+                if (equipo1 == null || equipo2 == null) {
+                    continue;
+                }
+                Club local;
+                Club visitante;
+
+                if ((jornada + i) % 2 == 0) {
+                    local = equipo1;
+                    visitante = equipo2;
+                } else {
+                    local = equipo2;
+                    visitante = equipo1;
+                }
+                ida.add(new Partido(local,visitante,jornada));
+                vuelta.add(new Partido(visitante,local,jornada+ jornadasIda));
+            }
+            Club ultimo = clubes.remove(cantidad - 1);
+            clubes.add(1,ultimo);
+        }
+        partidos.addAll(ida);
+        partidos.addAll(vuelta);
+        return new ArrayList<>(partidos);
+    }
+
+    public boolean programarPartido(Partido partido, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
+        if (estado != EstadoTorneo.PLANIFICADO) {
+            return false;
+        }
+        if (partido == null || fechaHora == null || estadio == null
+                || arbitro1 == null || arbitro2 == null || arbitro3 == null) {
+            return false;
+        }
+        if (!partidos.contains(partido)) {
+            return false;
+        }
+        LocalDate fecha = fechaHora.toLocalDate();
+        if (fecha.isBefore(fechaInicio) || fecha.isAfter(fechaFin)) {
+            return false;
+        }
+        if (!tieneDescanso(partido, fechaHora)) {
+            return false;
+        }
+        if (!estadioDisponible(partido, estadio, fechaHora)) {
+            return false;
+        }
+        if (!arbitrosDisponibles(partido,fechaHora,arbitro1,arbitro2,arbitro3)) {
+            return false;
+        }
+        return partido.programarPartido(fechaHora, estadio, arbitro1, arbitro2, arbitro3);
+    }
+
+    private boolean tieneDescanso(Partido partido, LocalDateTime nuevaFecha) {
+        for (Partido otroPartido : partidos) {
+            if (otroPartido == partido) {
+                continue;
+            }
+            if (otroPartido.getFechaHora() == null) {
+                continue;
+            }
+
+            boolean compartenClub = otroPartido.getLocal().equals(partido.getLocal())
+                    || otroPartido.getVisitante().equals(partido.getLocal())
+                    || otroPartido.getLocal().equals(partido.getVisitante())
+                    || otroPartido.getVisitante().equals(partido.getVisitante());
+
+            if (compartenClub) {
+                long minutos = Math.abs(Duration.between(otroPartido.getFechaHora(),nuevaFecha).toMinutes());
+                if (minutos < 48 * 60) {
+                    return false;
+                }
             }
         }
+        return true;
+    }
+
+    private boolean estadioDisponible(Partido partido, Estadio estadio, LocalDateTime nuevaFecha) {
+        LocalDateTime finNuevo = nuevaFecha.plusHours(3);
+        for (Partido otroPartido : partidos) {
+            if (otroPartido == partido) {
+                continue;
+            }
+            if (otroPartido.getFechaHora() == null
+                    || otroPartido.getEstadio() == null) {
+                continue;
+            }
+            if (otroPartido.getEstadio() == estadio) {
+                LocalDateTime inicioExistente = otroPartido.getFechaHora();
+                LocalDateTime finExistente =  inicioExistente.plusHours(3);
+                boolean haySuperposicion = nuevaFecha.isBefore(finExistente) && inicioExistente.isBefore(finNuevo);
+                if (haySuperposicion) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean arbitrosDisponibles(Partido partido, LocalDateTime nuevaFecha, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
+        Arbitro[] nuevosArbitros = {arbitro1, arbitro2, arbitro3};
+        for (Arbitro arbitro : nuevosArbitros) {
+            if (arbitro == null) {
+                return false;
+            }
+            Club clubHincha = arbitro.getClubHincha();
+            if (clubHincha != null && (clubHincha.equals(partido.getLocal()) || clubHincha.equals(partido.getVisitante()))) {
+                return false;
+            }
+        }
+        for (Partido otroPartido : partidos) {
+            if (otroPartido == partido) {
+                continue;
+            }
+            if (otroPartido.getFechaHora() == null || otroPartido.getTernaArbitral() == null) {
+                continue;
+            }
+            if (!otroPartido.getFechaHora().toLocalDate().equals(nuevaFecha.toLocalDate())) {
+                continue;
+            }
+            Arbitro[] arbitrosAsignados = otroPartido.getTernaArbitral().getArbitros();
+            for (Arbitro nuevo : nuevosArbitros) {
+                for (Arbitro asignado : arbitrosAsignados) {
+                    if (nuevo == asignado) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 }
