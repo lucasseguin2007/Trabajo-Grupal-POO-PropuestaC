@@ -15,8 +15,6 @@ public class Partido {
     private List<Evento> eventos;
     private LocalDateTime fechaHora;
     private EstadoPartido estado;
-    private int golesLocal;
-    private int golesVisitantes;
     private List<NominaPartido> nominas;
 
     public Partido(Estadio estadio, LocalDateTime fechaHora, Club local, Club visitante, TernaArbitral ternaArbitral) {
@@ -31,8 +29,6 @@ public class Partido {
         this.local = local;
         this.visitante = visitante;
         this.ternaArbitral = ternaArbitral;
-        golesLocal = 0;
-        golesVisitantes = 0;
         this.estado = EstadoPartido.PROGRAMADO;
         this.eventos = new ArrayList<>();
         this.nominas = new ArrayList<>();
