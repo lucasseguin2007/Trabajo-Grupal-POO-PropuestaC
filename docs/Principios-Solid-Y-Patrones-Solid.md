@@ -26,28 +26,28 @@ PATRONES GRASP
 ================================================================================
 1. EXPERTO EN INFORMACIÓN
 
-Este patrón se puede aplicar en cálculo del xG, ya que Remate conoce la zona desde la que fue realizado entonces es lógico que el objeto lo calcule.
-Justificación: No tiene sentido que GestorReportes conozca los valores específicos de cada zona si puede pedirle a cada remate su resultado.
-Clases involucradas: Remate, Enums.ZonaRemate y GestorReportes.
+Este patrón se puede aplicar en cálculo del xG, ya que eventos.Remate conoce la zona desde la que fue realizado entonces es lógico que el objeto lo calcule.
+Justificación: No tiene sentido que reportes.GestorReportes conozca los valores específicos de cada zona si puede pedirle a cada remate su resultado.
+Clases involucradas: eventos.Remate, enums.ZonaRemate y reportes.GestorReportes.
 Ventaja: la lógica de cálculo queda cerca de sus datos y las otras clases solo tiene que invoca calcularXG().
 
 2. CREADOR
 
-Partido mantiene historia de los eventos que ocurren mediante composición entonces también puede ser un candidato para crear eventos anulaciones. Permite al operador solicitar anular un gol si se identifica el evento,se verifica que pertenezca al historial de Partido, que sea anulable y que todavía no tenga una anulación válida.
-Justificación: Partido contiene los eventos y dispone de la información necesaria para registrar la corrección.
-Clases involucradas: Partido, Evento, AnulaciónEvento
+partidos.Partido mantiene historia de los eventos que ocurren mediante composición entonces también puede ser un candidato para crear eventos anulaciones. Permite al operador solicitar anular un gol si se identifica el evento,se verifica que pertenezca al historial de partidos.Partido, que sea anulable y que todavía no tenga una anulación válida.
+Justificación: partidos.Partido contiene los eventos y dispone de la información necesaria para registrar la corrección.
+Clases involucradas: partidos.Partido, eventos.Evento, AnulaciónEvento
 Ventaja: La creación del registro de anulación se encuentra en el objeto que contiene el historial lo cual preserva la trazabilidad.
 
 3. CONTROLADOR
 
 Implementar una clase ControladorPartidos
 Justificación: ControladorPartidos recibe las solicitudes del operador y coordina los objetos del dominio involucrado en la operación.
-Clases involucradas: ControladorPartidos, Partido y ServicioNotificaciones.
+Clases involucradas: ControladorPartidos, partidos.Partido y ServicioNotificaciones.
 Ventaja: la coordinación queda separada de las reglas de negocio, que siguen siendo responsabilidad de las clases del dominio.
 
 4. BAJO ACOPLAMIENTO
 
-Cada vez que se cambiaría un canal, podría terminar modificando el código relacionado con el partido. Una solución podría ser mantener responsabilidades distribuidas. Partido registra y valida eventos, ControladorPartidos coordina el caso de uso, ServicioNotificaciones gestiona el envío y CanalEnvio define el contrato para las implementaciones.
-Justificación: Evita que Partido dependa de implementaciones externas de notificación.
-Clases involucradas: Partido, ControladorPartidos, ServicioNotificaciones, CanalEnvio y sus implementaciones.
+Cada vez que se cambiaría un canal, podría terminar modificando el código relacionado con el partido. Una solución podría ser mantener responsabilidades distribuidas. partidos.Partido registra y valida eventos, ControladorPartidos coordina el caso de uso, ServicioNotificaciones gestiona el envío y CanalEnvio define el contrato para las implementaciones.
+Justificación: Evita que partidos.Partido dependa de implementaciones externas de notificación.
+Clases involucradas: partidos.Partido, ControladorPartidos, ServicioNotificaciones, CanalEnvio y sus implementaciones.
 Ventaja: los cambios en los canales de envío tienen un impacto limitado sobre la lógica deportiva.
