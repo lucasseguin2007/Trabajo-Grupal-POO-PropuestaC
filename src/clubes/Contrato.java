@@ -82,7 +82,7 @@ public class Contrato implements Serializable {
         }
         LocalDate finEfectivo;
         if (!estado) {
-            finEfectivo = fechaRescision = fechaRescision.minusDays(1);
+            finEfectivo = fechaRescision.minusDays(1);
         } else {
             finEfectivo = fechaFin;
         }

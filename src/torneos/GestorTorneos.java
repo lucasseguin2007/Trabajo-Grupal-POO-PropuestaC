@@ -31,6 +31,13 @@ public class GestorTorneos implements Serializable{
         torneoActual = torneo;
         return true;
     }
+    public void cargarDatos(GestorTorneos gestorCargado) {
+        if (gestorCargado == null) {
+            throw new IllegalArgumentException("El gestor cargado no puede ser nulo");
+        }
+        this.torneoActual = gestorCargado.getTorneoActual();
+        this.historialTorneos = new ArrayList<>(gestorCargado.getHistorialTorneos());
+    }
 
     public boolean archivarTorneoActual() {
         if (torneoActual == null) {

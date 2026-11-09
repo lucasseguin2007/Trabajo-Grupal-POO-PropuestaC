@@ -18,6 +18,9 @@ public class Sponsor {
     public List<Patrocinio> getPatrocinios() {
         return new ArrayList<>(patrocinios);
     }
+    public String getNombre() {
+        return nombre;
+    }
 
     public boolean agregarPatrocinio(Patrocinio patrocinio) {
         if (patrocinio == null){
