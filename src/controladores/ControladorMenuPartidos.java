@@ -1,5 +1,7 @@
 package controladores;
+import enums.TipoGol;
 import partidos.Partido;
+import personas.Jugador;
 import torneos.GestorTorneos;
 import torneos.Torneo;
 import vistas.VistaConsola;
@@ -12,7 +14,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
+import java.util.ArrayList;
 import java.util.List;
+import enums.RolEquipo;
+import torneos.InscripcionTorneo;
+import torneos.JugadorPlantel;
+import torneos.Plantel;
+import partidos.NominaPartido;
+import clubes.Club;
 
 public class ControladorMenuPartidos {
     private VistaConsola vista;
@@ -37,19 +46,19 @@ public class ControladorMenuPartidos {
                     programarPartido();
                     break;
                 case 3:
-                    vista.mostrarMensaje("Convocar jugadores.");
+                    convocarJugador();
                     break;
                 case 4:
-                    vista.mostrarMensaje("Iniciar partido.");
+                    iniciarPartido();
                     break;
                 case 5:
-                    vista.mostrarMensaje("Registrar gol.");
+                    registrarGol();
                     break;
                 case 6:
-                    vista.mostrarMensaje("Registrar tarjeta roja.");
+                    registrarTarjetaRoja();
                     break;
                 case 7:
-                    vista.mostrarMensaje("Finalizar partido.");
+                    finalizarPartido();
                     break;
                 case 0:
                     vista.mostrarMensaje("Volviendo al menú principal...");
@@ -141,6 +150,177 @@ public class ControladorMenuPartidos {
             vista.mostrarMensaje("Error: número inválido.");
         } catch (IllegalArgumentException e) {
             vista.mostrarMensaje("Error: " + e.getMessage());
+        }
+
+    }
+    private void convocarJugador() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        vista.mostrarMensaje("\n=== CONVOCAR JUGADOR ===");
+        vista.mostrarMensaje("1. Equipo local");
+        vista.mostrarMensaje("2. Equipo visitante");
+        int opcionEquipo = vista.solicitarOpcion();
+        RolEquipo rol;
+        Club club;
+        if (opcionEquipo == 1) {
+            rol = RolEquipo.LOCAL;
+            club = partido.getLocal();
+
+        } else if (opcionEquipo == 2) {
+            rol = RolEquipo.VISITANTE;
+            club = partido.getVisitante();
+
+        } else {
+            vista.mostrarMensaje("Equipo inválido.");
+            return;
+        }
+        InscripcionTorneo inscripcionEncontrada = null;
+        for (InscripcionTorneo inscripcion : torneo.getInscriptos()) {
+            if (inscripcion.getClub().equals(club)) {
+                inscripcionEncontrada = inscripcion;
+                break;
+            }
+        }
+        if (inscripcionEncontrada == null) {
+            vista.mostrarMensaje("No se encontró la inscripción del club.");
+            return;
+        }
+        Plantel plantel = inscripcionEncontrada.getPlantel();
+        List<JugadorPlantel> jugadores = plantel.getJugadoresPlantel();
+        if (jugadores.isEmpty()) {
+            vista.mostrarMensaje("El plantel no tiene jugadores.");
+            return;
+        }
+        vista.mostrarMensaje("\n=== JUGADORES DISPONIBLES ===");
+        for (int i = 0; i < jugadores.size(); i++) {
+            JugadorPlantel jp = jugadores.get(i);
+            vista.mostrarMensaje((i + 1) + ". " + jp.getJugador().getNombre() + " " + jp.getJugador().getApellido() + (jp.estaSuspendido() ? " (SUSPENDIDO)" : "")
+            );
+        }
+        vista.mostrarMensaje("Seleccione el número del jugador:");
+        int numeroJugador = vista.solicitarOpcion();
+        if (numeroJugador < 1 || numeroJugador > jugadores.size()) {
+            vista.mostrarMensaje("Jugador inválido.");
+            return;
+        }
+        JugadorPlantel jugador = jugadores.get(numeroJugador - 1);
+        boolean existeNomina = false;
+        for (NominaPartido nomina : partido.getNominas()) {
+            if (nomina.getRol() == rol) {
+                existeNomina = true;
+                break;
+            }
+        }
+        if (!existeNomina) {
+            partido.agregarNomina(rol, club);
+        }
+        vista.mostrarMensaje("\n1. Titular");
+        vista.mostrarMensaje("2. Suplente");
+        int tipoConvocatoria = vista.solicitarOpcion();
+        boolean convocado;
+        if (tipoConvocatoria == 1) {
+            convocado = torneo.convocarTitular(partido, rol, jugador);
+        } else if (tipoConvocatoria == 2) {
+            convocado = torneo.convocarSuplente(partido, rol, jugador);
+        } else {
+            vista.mostrarMensaje("Opción inválida.");
+            return;
+        }
+        if (convocado) {
+            vista.mostrarMensaje("Jugador convocado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo convocar al jugador. " + "Verificá su disponibilidad y las reglas de convocatoria.");
+        }
+    }
+
+    private void iniciarPartido() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        boolean iniciado = partido.iniciar();
+        if (iniciado) {
+            vista.mostrarMensaje("Partido iniciado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo iniciar el partido. Verificá que esté programado y tenga las nóminas correspondientes.");
+        }
+    }
+
+    private Jugador seleccionarJugadorConvocado(Partido partido) {
+        List<Jugador> jugadores = new ArrayList<>();
+        for (NominaPartido nomina : partido.getNominas()) {
+            for (Jugador jugador : nomina.getJugadoresTitulares()) {
+                jugadores.add(jugador);
+            }
+            for (Jugador jugador : nomina.getJugadoresSuplentes()) {
+                jugadores.add(jugador);
+            }
+        }
+        if (jugadores.isEmpty()) {
+            vista.mostrarMensaje("No hay jugadores convocados.");
+            return null;
+        }
+        vista.mostrarMensaje("\n=== JUGADORES CONVOCADOS ===");
+        for (int i = 0; i < jugadores.size(); i++) {
+            Jugador jugador = jugadores.get(i);
+            vista.mostrarMensaje((i + 1) + ". " + jugador.getNombre() + " " + jugador.getApellido());
+        }
+        vista.mostrarMensaje("Seleccione el jugador:");
+        int numero = vista.solicitarOpcion();
+        if (numero < 1 || numero > jugadores.size()) {
+            vista.mostrarMensaje("Jugador inválido.");
+            return null;
+        }
+        return jugadores.get(numero - 1);
+    }
+    private void registrarGol() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Jugador jugador = seleccionarJugadorConvocado(partido);
+        if (jugador == null) {
+            return;
+        }
+        vista.mostrarMensaje("Minuto del gol:");
+        int minuto = vista.solicitarOpcion();
+        boolean registrado = controladorPartidos.registrarGol(partido, minuto, jugador, TipoGol.A_FAVOR);
+        vista.mostrarMensaje(registrado ? "Gol registrado correctamente." : "No se pudo registrar el gol.");
+    }
+
+    private void registrarTarjetaRoja() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Jugador jugador = seleccionarJugadorConvocado(partido);
+        if (jugador == null) {
+            return;
+        }
+        vista.mostrarMensaje("Minuto de la expulsión:");
+        int minuto = vista.solicitarOpcion();
+        boolean registrado = controladorPartidos.registrarTarjetaRoja(partido, minuto, jugador
+        );
+        vista.mostrarMensaje(registrado ? "Tarjeta roja registrada correctamente." : "No se pudo registrar la tarjeta roja.");
+    }
+
+    private void finalizarPartido() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        boolean finalizado = controladorPartidos.finalizarPartido(torneo, partido
+        );
+        if (finalizado) {
+            vista.mostrarMensaje("Partido finalizado correctamente.");
+            vista.mostrarMensaje("Resultado: " + partido.getLocal().getNombre() + " " + partido.getGolesLocal() + " - " + partido.getGolesVisitante() + " " + partido.getVisitante().getNombre()
+            );
+        } else {
+            vista.mostrarMensaje("No se pudo finalizar el partido.");
         }
     }
 

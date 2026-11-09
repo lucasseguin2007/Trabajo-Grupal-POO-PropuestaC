@@ -27,7 +27,11 @@ public class ControladorPrincipal {
     private ControladorTorneos controladorTorneos;
     private ControladorJugadores controladorJugadores;
     private ControladorMenuPartidos controladorMenuPartidos;
-
+    private ControladorReportes controladorReportes;
+    private ControladorPatrocinios controladorPatrocinios;
+    private ControladorSuscriptores controladorSuscriptores;
+    private ControladorContratos controladorContratos;
+    private ControladorPersistencia controladorPersistencia;
 
     public ControladorPrincipal(VistaConsola vista, GestorTorneos gestorTorneos) {
         this.vista = vista;
@@ -36,10 +40,15 @@ public class ControladorPrincipal {
         canales.add(new CanalApp());
         ServicioNotificaciones servicio = new ServicioNotificaciones(canales);
         ControladorPartidos controladorPartidos = new ControladorPartidos(servicio);
+        this.controladorSuscriptores = new ControladorSuscriptores(controladorPartidos, vista, gestorTorneos);
         this.controladorMenuPartidos = new ControladorMenuPartidos(vista, gestorTorneos, controladorPartidos);
         this.gestorContratos = new GestorContratos();
         this.controladorTorneos = new ControladorTorneos(vista,gestorTorneos);
         this.controladorJugadores = new ControladorJugadores(vista,gestorTorneos,gestorContratos);
+        this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
+        this.controladorPatrocinios = new ControladorPatrocinios(vista,gestorTorneos);
+        this.controladorContratos = new ControladorContratos(vista,gestorTorneos,gestorContratos);
+        this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos);
     }
 
     public void iniciar() {
@@ -58,30 +67,26 @@ public class ControladorPrincipal {
                     controladorMenuPartidos.gestionarPartidos();
                     break;
                 case 4:
-                    vista.mostrarMensaje("Gestión de contratos.");
+                    controladorContratos.gestionarContratos();
                     break;
                 case 5:
-                    vista.mostrarMensaje("Gestion de contratos");
+                    controladorPatrocinios.gestionarPatrocinios();
                     break;
                 case 6:
-                    vista.mostrarMensaje("Consulta de reportes");
+                    controladorReportes.gestionarReportes();
                     break;
                 case 7:
-                    vista.mostrarMensaje("Gestión de suscriptores.");
+                    controladorSuscriptores.gestionarSuscriptores();
                     break;
-
                 case 8:
-                    vista.mostrarMensaje("Guardar datos.");
+                    controladorPersistencia.guardarDatos();
                     break;
-
                 case 9:
-                    vista.mostrarMensaje("Cargar datos.");
+                    controladorPersistencia.cargarDatos();
                     break;
-
                 case 0:
                     vista.mostrarMensaje("Saliendo de FutbolStats...");
                     break;
-
                 default:
                     vista.mostrarMensaje("Opción inválida.");
                     break;

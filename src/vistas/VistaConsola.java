@@ -73,5 +73,43 @@ public class VistaConsola {
         System.out.println("===============================");
     }
 
+    public void mostrarMenuReportes() {
+        System.out.println("\n===== REPORTES =====");
+        System.out.println("1. Tabla de posiciones");
+        System.out.println("2. Tabla de goleadores");
+        System.out.println("3. Equipos menos goleados");
+        System.out.println("4. Proyección por promedio");
+        System.out.println("5. Proyección por simulación xG");
+        System.out.println("0. Volver al menú principal");
+        System.out.println("====================");
+    }
+
+    public void mostrarMenuPatrocinios() {
+        System.out.println("\n===== PATROCINIOS =====");
+        System.out.println("1. Registrar sponsor");
+        System.out.println("2. Crear patrocinio");
+        System.out.println("3. Consultar patrocinios");
+        System.out.println("0. Volver al menú principal");
+        System.out.println("=======================");
+    }
+
+    public void mostrarMenuSuscriptores() {
+        System.out.println("\n===== SUSCRIPTORES =====");
+        System.out.println("1. Registrar suscriptor");
+        System.out.println("2. Seguir un club");
+        System.out.println("3. Consultar suscriptores");
+        System.out.println("0. Volver al menú principal");
+        System.out.println("========================");
+    }
+
+    public void mostrarMenuContratos() {
+        System.out.println("\n===== GESTIÓN DE CONTRATOS =====");
+        System.out.println("1. Consultar contratos de un jugador");
+        System.out.println("2. Rescindir contrato");
+        System.out.println("3. Transferir jugador");
+        System.out.println("0. Volver al menú principal");
+        System.out.println("================================");
+    }
+
 
 }
