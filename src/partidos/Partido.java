@@ -77,12 +77,19 @@ public class Partido implements Serializable {
     public TernaArbitral getTernaArbitral() {
         return ternaArbitral;
     }
+
+    public List<NominaPartido> getNominas() {
+        return nominas;
+    }
+
     //Metodos
         public boolean programarPartido(Torneo torneo, LocalDateTime fechaHora, Estadio estadio, Arbitro arbitro1, Arbitro arbitro2, Arbitro arbitro3) {
         if (torneo == null) {
             return false;
         }
-        if (!torneo.puedeProgramarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3));
+        if (!torneo.puedeProgramarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3)){
+            return false;
+        }
         if (estado != EstadoPartido.PROGRAMADO) {
             return false;
         }
