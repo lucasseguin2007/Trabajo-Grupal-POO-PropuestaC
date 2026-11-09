@@ -19,9 +19,9 @@ public class ControladorReportes {
     private VistaConsola vista;
     private GestorTorneos gestorTorneos;
     private GestorReportes gestorReportes;
-    public ControladorReportes(VistaConsola vista, GestorTorneos Torneo) {
+    public ControladorReportes(VistaConsola vista, GestorTorneos gestorTorneo) {
         this.vista = vista;
-        this.gestorTorneos = gestorTorneos;
+        this.gestorTorneos = gestorTorneo;
         this.gestorReportes = new GestorReportes();
     }
 

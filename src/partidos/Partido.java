@@ -87,7 +87,9 @@ public class Partido implements Serializable {
         if (torneo == null) {
             return false;
         }
-        if (!torneo.puedeProgramarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3));
+        if (!torneo.puedeProgramarPartido(this,fechaHora,estadio,arbitro1,arbitro2,arbitro3)){
+            return false;
+        }
         if (estado != EstadoPartido.PROGRAMADO) {
             return false;
         }

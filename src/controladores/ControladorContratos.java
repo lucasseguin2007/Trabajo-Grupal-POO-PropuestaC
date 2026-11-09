@@ -27,7 +27,7 @@ public class ControladorContratos {
     public void gestionarContratos() {
         int opcion;
         do {
-            vista.mostrarMenuPatrocinios();
+            vista.mostrarMenuContratos();
             opcion = vista.solicitarOpcion();
             switch (opcion) {
                 case 1:
