@@ -1,6 +1,7 @@
 package controladores;
 
 import clubes.Club;
+import clubes.GestorClubes;
 import torneos.GestorTorneos;
 import vistas.VistaConsola;
 
@@ -32,6 +33,7 @@ public class ControladorPrincipal {
     private ControladorSuscriptores controladorSuscriptores;
     private ControladorContratos controladorContratos;
     private ControladorPersistencia controladorPersistencia;
+    private GestorClubes gestorClubes;
 
     public ControladorPrincipal(VistaConsola vista, GestorTorneos gestorTorneos) {
         this.vista = vista;
@@ -43,9 +45,9 @@ public class ControladorPrincipal {
         this.controladorSuscriptores = new ControladorSuscriptores(controladorPartidos, vista, gestorTorneos);
         this.controladorMenuPartidos = new ControladorMenuPartidos(vista, gestorTorneos, controladorPartidos);
         this.gestorContratos = new GestorContratos();
-        this.controladorTorneos = new ControladorTorneos(vista,gestorTorneos);
-        this.controladorJugadores = new ControladorJugadores(vista,gestorTorneos,gestorContratos);
-        this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
+        this.gestorClubes = new GestorClubes();
+        this.controladorTorneos = new ControladorTorneos(vista, gestorTorneos, gestorClubes);
+        this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
         this.controladorPatrocinios = new ControladorPatrocinios(vista,gestorTorneos);
         this.controladorContratos = new ControladorContratos(vista,gestorTorneos,gestorContratos);
         this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos);

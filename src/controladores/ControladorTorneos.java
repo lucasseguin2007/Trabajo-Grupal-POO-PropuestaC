@@ -4,7 +4,7 @@ import torneos.GestorTorneos;
 import torneos.InscripcionTorneo;
 import torneos.Torneo;
 import vistas.VistaConsola;
-
+import clubes.GestorClubes;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -13,9 +13,11 @@ import java.util.List;
 public class ControladorTorneos {
     private VistaConsola vista;
     private GestorTorneos gestorTorneos;
-    public ControladorTorneos(VistaConsola vista, GestorTorneos gestorTorneos) {
+    private GestorClubes gestorClubes;
+    public ControladorTorneos(VistaConsola vista, GestorTorneos gestorTorneos, GestorClubes gestorClubes) {
         this.vista = vista;
         this.gestorTorneos = gestorTorneos;
+        this.gestorClubes = gestorClubes;
     }
     public void gestionarTorneos() {
         int opcion;
@@ -105,27 +107,23 @@ public class ControladorTorneos {
     }
     public void inscribirClub() {
         Torneo torneo = gestorTorneos.getTorneoActual();
+
         if (torneo == null) {
             vista.mostrarMensaje("Primero debe crear un torneo.");
             return;
         }
-        String nombre = vista.solicitarTexto("Nombre del club: ");
-        try {
-            LocalDate fundacion = LocalDate.parse(vista.solicitarTexto("Fecha de fundación (AAAA-MM-DD): "));
-            Club club = new Club(nombre, fundacion, null);
-            boolean inscripto = torneo.inscribirClub(club);
-
-            if (inscripto) {
-                vista.mostrarMensaje("Club " + nombre + "Inscripto correctamente.");
-            } else {
-                vista.mostrarMensaje("No se pudo inscribir el club");
-            }
-        } catch (DateTimeParseException e) {
-            vista.mostrarMensaje("Error: formato de fecha inválido.");
-        } catch (IllegalArgumentException e) {
-            vista.mostrarMensaje("Error: " + e.getMessage());
+        String nombreClub = vista.solicitarTexto("Nombre del club: ");
+        Club club = gestorClubes.buscarClub(nombreClub);
+        if (club == null) {
+            vista.mostrarMensaje("El club no existe en el registro.");
+            return;
         }
-
+        boolean inscripto = torneo.inscribirClub(club);
+        if (inscripto) {
+            vista.mostrarMensaje("Club " + nombreClub + " inscripto correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo inscribir el club.");
+        }
     }
 
     public void consultarClubesInscriptos() {
