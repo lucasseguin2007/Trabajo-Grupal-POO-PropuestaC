@@ -1,4 +1,6 @@
 package controladores;
+import clubes.Club;
+import clubes.GestorClubes;
 import clubes.GestorContratos;
 import enums.Posicion;
 import personas.Jugador;
@@ -16,10 +18,12 @@ public class ControladorJugadores {
     private VistaConsola vista;
     private GestorTorneos gestorTorneos;
     private GestorContratos gestorContratos;
-    public ControladorJugadores(VistaConsola vista, GestorTorneos gestorTorneos, GestorContratos gestorContratos) {
+    private GestorClubes gestorClubes;
+    public ControladorJugadores(VistaConsola vista, GestorTorneos gestorTorneos, GestorContratos gestorContratos,GestorClubes gestorClubes) {
         this.vista = vista;
         this.gestorTorneos = gestorTorneos;
         this.gestorContratos = gestorContratos;
+        this.gestorClubes = gestorClubes;
     }
     public void gestionarJugadores() {
         int opcion;
@@ -33,7 +37,9 @@ public class ControladorJugadores {
                 case 2:
                     consultarJugadoresPlantel();
                     break;
-
+                case 3:
+                    agregarClub();
+                    break;
                 case 0:
                     vista.mostrarMensaje("Volviendo al menú principal...");
                     break;
@@ -66,6 +72,24 @@ public class ControladorJugadores {
             }
         }
         vista.mostrarMensaje("No se encotró el club en el torneo.");
+    }
+
+    public void agregarClub() {
+        String nombre = vista.solicitarTexto("Nombre del club: ");
+        try {
+            LocalDate fundacion = LocalDate.parse(vista.solicitarTexto("Fecha de fundación (AAAA-MM-DD): "));
+            Club club = new Club(nombre, fundacion, null);
+            if (gestorClubes.agregarClub(club)) {
+                vista.mostrarMensaje("Club " + nombre + " creado correctamente.");
+            } else {
+                vista.mostrarMensaje("No se pudo crear el club.");
+            }
+        } catch (DateTimeParseException e) {
+            vista.mostrarMensaje("Error: formato de fecha inválido.");
+        } catch (IllegalArgumentException e) {
+            vista.mostrarMensaje("Error: " + e.getMessage());
+        }
+
     }
 
     public void agregarJugadorPlantel() {

@@ -54,11 +54,12 @@ public class VistaConsola {
     }
 
     public void mostrarMenuJugadores() {
-        System.out.println("\n===== GESTIÓN DE JUGADORES =====");
+        System.out.println("\n===== GESTIÓN DE JUGADORES Y CLUBES =====");
         System.out.println("1. Agregar jugador a un plantel");
         System.out.println("2. Consultar jugadores de un plantel");
+        System.out.println("3. Crear club");
         System.out.println("0. Volver al menú principal");
-        System.out.println("================================");
+        System.out.println("=========================================");
     }
 
     public void mostrarMenuPartidos() {
