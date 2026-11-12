@@ -1,6 +1,7 @@
 package clubes;
 
 import partidos.Estadio;
+import personas.Entrenador;
 import personas.Jugador;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ public class Club implements Serializable {
     private LocalDate fechaFundacion;
     private List<Jugador> jugadores;
     private Estadio estadio;
+    private Entrenador entrenador;
 
     //Metodo constructor
     public Club(String nombre, LocalDate fechaFundacion, Estadio estadio) {
@@ -44,7 +46,22 @@ public class Club implements Serializable {
         return new ArrayList<>(jugadores);
     }
 
+    public Entrenador entrenador() {
+        return entrenador;
+    }
+
     // Metodos
+
+    public Entrenador getEntrenador() {
+        return entrenador;
+    }
+    public boolean asignarEntrenador(Entrenador entrenador) {
+        if (entrenador == null) {
+            return false;
+        }
+        this.entrenador = entrenador;
+        return true;
+    }
     public boolean contieneJugador(Jugador jugador) {
         return jugadores.contains(jugador);
     }

@@ -24,6 +24,15 @@ public class GestorClubes {
         }
     }
 
+    public boolean guardarCambios() {
+        try {
+            gestorArchivos.guardarClubes(clubes,ruta);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     public boolean agregarClub(Club club) {
 
         if (club == null) {

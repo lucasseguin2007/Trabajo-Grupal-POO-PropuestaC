@@ -9,6 +9,7 @@ import partidos.Estadio;
 import personas.Arbitro;
 import enums.CategoriaArbitro;
 import enums.TipoCesped;
+import enums.ZonaRemate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class ControladorMenuPartidos {
     private VistaConsola vista;
     private GestorTorneos gestorTorneos;
     private ControladorPartidos controladorPartidos;
+
 
     public ControladorMenuPartidos(VistaConsola vista, GestorTorneos gestorTorneos, ControladorPartidos controladorPartidos) {
         this.vista = vista;
@@ -55,10 +57,23 @@ public class ControladorMenuPartidos {
                     registrarGol();
                     break;
                 case 6:
-                    registrarTarjetaRoja();
+                    registrarTarjetaAmarilla();
                     break;
                 case 7:
+                    registrarTarjetaRoja();
+                    break;
+                case 8:
+                    registrarCambio();
+                    break;
+                case 9:
                     finalizarPartido();
+                    break;
+                case 10:
+                    registrarRemate();
+                    break;
+
+                case 11:
+                    registrarFalta();
                     break;
                 case 0:
                     vista.mostrarMensaje("Volviendo al menú principal...");
@@ -323,5 +338,120 @@ public class ControladorMenuPartidos {
             vista.mostrarMensaje("No se pudo finalizar el partido.");
         }
     }
+
+    public void registrarCambio() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        vista.mostrarMensaje("\n=== JUGADOR QUE SALE ===");
+        Jugador jugadorSale = seleccionarJugadorConvocado(partido);
+        if (jugadorSale == null) {
+            return;
+        }
+        vista.mostrarMensaje("\n=== JUGADOR QUE ENTRA ===");
+        Jugador jugadorEntra = seleccionarJugadorConvocado(partido);
+        if (jugadorEntra == null) {
+            return;
+        }
+        vista.mostrarMensaje("Minuto del cambio: ");
+        int minuto = vista.solicitarOpcion();
+        boolean registrado = controladorPartidos.registrarCambio(partido,minuto,jugadorSale,jugadorEntra);
+        if (registrado) {
+            vista.mostrarMensaje("Cambio registrado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo registrar el cambio.");
+        }
+    }
+
+    public void registrarTarjetaAmarilla() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Jugador jugador = seleccionarJugadorConvocado(partido);
+        if (jugador == null) {
+            return;
+        }
+        vista.mostrarMensaje("Minutp de la tarjeta amarilla: ");
+        int minuto = vista.solicitarOpcion();
+        boolean registrado = controladorPartidos.registrarTarjetaAmarilla(partido,minuto,jugador);
+        if (registrado) {
+            vista.mostrarMensaje("Tarjeta Amarilla registrada correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo registrar la tarjeta amarilla.");
+        }
+    }
+
+    public void registrarRemate() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Jugador jugador = seleccionarJugadorConvocado(partido);
+        if (jugador == null) {
+            return;
+        }
+        vista.mostrarMensaje("\n=== ZONA DEL REMATE ===");
+        vista.mostrarMensaje("1. Area chica");
+        vista.mostrarMensaje("2. Area grande");
+        vista.mostrarMensaje("3. Fuera del area");
+        vista.mostrarMensaje("4. Penal");
+        int opcion = vista.solicitarOpcion();
+        ZonaRemate zona;
+        switch (opcion) {
+            case 1:
+                zona=ZonaRemate.AREA_CHICA;
+                break;
+            case 2:
+                zona =ZonaRemate.AREA_GRANDE;
+                break;
+            case 3:
+                zona= ZonaRemate.FUERA_DEL_AREA;
+                break;
+            case 4:
+                zona =ZonaRemate.PENAL;
+                break;
+            default:
+                vista.mostrarMensaje("Zona de remate invalida.");
+                return;
+        }
+        vista.mostrarMensaje("Mnuto del remate:");
+        int minuto = vista.solicitarOpcion();
+        if (minuto < 0 || minuto > 120) {
+            vista.mostrarMensaje("El minuto debe estar entre 0 y 120.");
+            return;
+        }
+        boolean registrado = controladorPartidos.registrarRemate(partido,minuto,jugador,zona);
+        if (registrado) {
+            vista.mostrarMensaje("Remate registrado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo registrar el remate.");
+        }
+    }
+
+    private void registrarFalta() {
+        Partido partido = seleccionarPartido();
+        if (partido == null) {
+            return;
+        }
+        Jugador jugador = seleccionarJugadorConvocado(partido);
+        if (jugador == null) {
+            return;
+        }
+        vista.mostrarMensaje("Minuto de la falta:");
+        int minuto = vista.solicitarOpcion();
+        if (minuto < 0 || minuto > 120) {
+            vista.mostrarMensaje("El minuto debe estar entre 0 y 120.");
+            return;
+        }
+        boolean registrado = controladorPartidos.registrarFalta(partido, minuto, jugador);
+        if (registrado) {
+            vista.mostrarMensaje("Falta registrada correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo registrar la falta.");
+        }
+    }
+
 
 }

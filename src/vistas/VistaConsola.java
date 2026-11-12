@@ -49,6 +49,9 @@ public class VistaConsola {
         System.out.println("5. Consultar clubes inscriptos");
         System.out.println("6. Confirmar inscripción de un club");
         System.out.println("7. Generar fixture");
+        System.out.println("8. Iniciar torneo");
+        System.out.println("9. Finalizar torneo");
+        System.out.println("10. Archivar torneo");
         System.out.println("0. Volver al menú principal");
         System.out.println("==============================");
     }
@@ -58,6 +61,8 @@ public class VistaConsola {
         System.out.println("1. Agregar jugador a un plantel");
         System.out.println("2. Consultar jugadores de un plantel");
         System.out.println("3. Crear club");
+        System.out.println("4. Asignar entrenador a un club");
+        System.out.println("5. Consultar entrenador de un club");
         System.out.println("0. Volver al menú principal");
         System.out.println("=========================================");
     }
@@ -69,8 +74,12 @@ public class VistaConsola {
         System.out.println("3. Convocar jugadores");
         System.out.println("4. Iniciar partido");
         System.out.println("5. Registrar gol");
-        System.out.println("6. Registrar tarjeta roja");
-        System.out.println("7. Finalizar partido");
+        System.out.println("6. Registrar tarjeta amarilla");
+        System.out.println("7. Registrar tarjeta roja");
+        System.out.println("8. Registrar cambio");
+        System.out.println("9. Finalizar partido");
+        System.out.println("10. Registrar remate");
+        System.out.println("11. Registrar falta");
         System.out.println("0. Volver al menú principal");
         System.out.println("===============================");
     }
