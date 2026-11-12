@@ -71,7 +71,6 @@ public class ControladorMenuPartidos {
                 case 10:
                     registrarRemate();
                     break;
-
                 case 11:
                     registrarFalta();
                     break;
@@ -340,7 +339,7 @@ public class ControladorMenuPartidos {
         }
     }
 
-    public void registrarCambio() {
+    private void registrarCambio() {
         Partido partido = seleccionarPartido();
         if (partido == null) {
             return;
@@ -365,7 +364,7 @@ public class ControladorMenuPartidos {
         }
     }
 
-    public void registrarTarjetaAmarilla() {
+    private void registrarTarjetaAmarilla() {
         Partido partido = seleccionarPartido();
         if (partido == null) {
             return;
@@ -384,7 +383,7 @@ public class ControladorMenuPartidos {
         }
     }
 
-    public void registrarRemate() {
+    private void registrarRemate() {
         Partido partido = seleccionarPartido();
         if (partido == null) {
             return;
