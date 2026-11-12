@@ -1,23 +1,12 @@
 package controladores;
 
-import clubes.Club;
 import clubes.GestorClubes;
 import notificaciones.*;
 import torneos.GestorTorneos;
 import vistas.VistaConsola;
-
 import clubes.GestorContratos;
-import personas.Jugador;
-import enums.Posicion;
-import torneos.JugadorPlantel;
-import torneos.InscripcionTorneo;
-import torneos.Torneo;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.List;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControladorPrincipal {
     private VistaConsola vista;
@@ -47,7 +36,8 @@ public class ControladorPrincipal {
         this.gestorContratos = new GestorContratos();
         this.gestorClubes = new GestorClubes();
         this.controladorTorneos = new ControladorTorneos(vista, gestorTorneos, gestorClubes);
-        this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
+        this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);
+        this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
         this.controladorPatrocinios = new ControladorPatrocinios(vista,gestorTorneos);
         this.controladorContratos = new ControladorContratos(vista,gestorTorneos,gestorContratos);
         this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos,gestorClubes);

@@ -137,40 +137,21 @@ public class Partido implements Serializable {
     }
 
     public boolean agregarTitular (RolEquipo rol, JugadorPlantel jugador) {
-        if (estado != EstadoPartido.PROGRAMADO || rol == null || jugador == null) {
+        NominaPartido nomina = obtenerNominaValida(rol,jugador);
+        if (nomina == null) {
             return false;
         }
-        for (NominaPartido nomina: nominas) {
-            if (nomina.getRol() == rol) {
-                if (jugador.getJugador().obtenerContratoVigente() == null) {
-                    return false;
-                }
-                if (jugador.getJugador().obtenerContratoVigente().getClub() != nomina.getClub()) {
-                    return false;
-                }
-                return nomina.agregarTitular(jugador);
-            }
-        }
-        return false;
+        return nomina.agregarTitular(jugador);
     }
 
     public boolean agregarSuplente (RolEquipo rol, JugadorPlantel jugador) {
-        if (estado != EstadoPartido.PROGRAMADO || rol == null || jugador == null) {
+        NominaPartido nomina = obtenerNominaValida(rol,jugador);
+        if (nomina == null) {
             return false;
         }
-        for (NominaPartido nomina: nominas) {
-            if (nomina.getRol() == rol) {
-                if (jugador.getJugador().obtenerContratoVigente() == null) {
-                    return false;
-                }
-                if (jugador.getJugador().obtenerContratoVigente().getClub() != nomina.getClub()) {
-                    return false;
-                }
-                return nomina.agregarSuplente(jugador);
-            }
-        }
-        return false;
+        return nomina.agregarSuplente(jugador);
     }
+
     public boolean iniciar() {
         if (estado != EstadoPartido.PROGRAMADO) {
             return false;
@@ -504,5 +485,24 @@ public class Partido implements Serializable {
             }
         }
         return goles;
+    }
+    private NominaPartido obtenerNominaValida(RolEquipo rol, JugadorPlantel jugador) {
+        if (estado != EstadoPartido.PROGRAMADO || rol == null || jugador == null) {
+            return null;
+        }
+        for (NominaPartido nomina: nominas) {
+            if (nomina.getRol() != rol) {
+                continue;
+            }
+            Jugador jugadorActual = jugador.getJugador();
+            if (jugadorActual.obtenerContratoVigente() == null) {
+                return null;
+            }
+            if (jugadorActual.obtenerContratoVigente().getClub() != nomina.getClub()) {
+                return null;
+            }
+            return nomina;
+        }
+        return null;
     }
 }
