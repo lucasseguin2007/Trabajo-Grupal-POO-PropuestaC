@@ -46,12 +46,7 @@ public class Club implements Serializable {
         return new ArrayList<>(jugadores);
     }
 
-    public Entrenador entrenador() {
-        return entrenador;
-    }
-
     // Metodos
-
     public Entrenador getEntrenador() {
         return entrenador;
     }

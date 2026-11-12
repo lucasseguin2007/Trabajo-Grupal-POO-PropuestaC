@@ -1,5 +1,6 @@
 package controladores;
 import clubes.Club;
+import partidos.Partido;
 import torneos.GestorTorneos;
 import torneos.InscripcionTorneo;
 import torneos.Torneo;
@@ -183,9 +184,13 @@ public class ControladorTorneos {
             return;
         }
         try {
-            torneo.generarFixture();
-            vista.mostrarMensaje("Fixture generado.");
-            vista.mostrarMensaje("Cantidad de partidos: " + torneo.getPartidos().size());
+            List<Partido> fixture = torneo.generarFixture();
+            if (fixture.isEmpty()) {
+                vista.mostrarMensaje("No se pudo generar el fixture.");
+                return;
+            }
+            vista.mostrarMensaje("Fixture generado correctamente.");
+            vista.mostrarMensaje("Cantidad de partidos: " + fixture.size());
         } catch (IllegalArgumentException | IllegalStateException e) {
             vista.mostrarMensaje("Error: " + e.getMessage());
         }

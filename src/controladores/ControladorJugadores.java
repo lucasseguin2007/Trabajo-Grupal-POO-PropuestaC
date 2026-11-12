@@ -130,7 +130,11 @@ public class ControladorJugadores {
             LocalDate inicioContrato = LocalDate.parse(vista.solicitarTexto("Inicio del contrato (AAAA-MM-DD): "));
             LocalDate finContrato = LocalDate.parse(vista.solicitarTexto("Fin del contrato (AAAA-MM-DD): "));
             double salario = Double.parseDouble(vista.solicitarTexto("Salario: "));
-            gestorContratos.registrarAlta(jugador, inscripcionEncontrada.getClub(), inicioContrato, finContrato, salario);
+            boolean contratoRegistrado = gestorContratos.registrarAlta(jugador, inscripcionEncontrada.getClub(), inicioContrato, finContrato, salario);
+            if (!contratoRegistrado) {
+                vista.mostrarMensaje("No se pudo registrar el contrato del jugador");
+                return;
+            }
             boolean agregado = inscripcionEncontrada.agregarJugador(numeroCamiseta, jugador);
             if (agregado) {
                 vista.mostrarMensaje("Jugador agregado correctamente.");
