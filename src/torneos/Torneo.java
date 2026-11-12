@@ -27,7 +27,7 @@ public class Torneo implements Serializable {
     private EstadoTorneo estado;
     private List<Partido> partidos;
     private List<InscripcionTorneo> inscriptos;
-    //Metodo constructor
+
     public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre no puede estar vacío");
