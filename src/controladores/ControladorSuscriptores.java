@@ -6,6 +6,8 @@ import torneos.GestorTorneos;
 import torneos.InscripcionTorneo;
 import torneos.Torneo;
 import vistas.VistaConsola;
+import notificaciones.CanalCorreo;
+import notificaciones.CanalSMS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +53,46 @@ public class ControladorSuscriptores {
         String correo = vista.solicitarTexto("Correo: ");
         String telefono = vista.solicitarTexto("Teléfono: ");
         Suscriptor suscriptor = new Suscriptor(nombre, correo, telefono);
-        suscriptor.configurarCanal(new CanalApp());
+        vista.mostrarMensaje("\n=== CONFIGURAR CANALES ===");
+        vista.mostrarMensaje("1. Aplicacion");
+        vista.mostrarMensaje("2. Correo electronico");
+        vista.mostrarMensaje("3. SMS");
+        boolean continuar = true;
+        int cantidadCanales = 0;
+        while (continuar) {
+            vista.mostrarMensaje("Seleccione un canal (0 para terminar):");
+            int opcion = vista.solicitarOpcion();
+            boolean agregado = false;
+            switch (opcion) {
+                case 1:
+                    agregado = suscriptor.configurarCanal(new CanalApp());
+                    break;
+                case 2:
+                    agregado = suscriptor.configurarCanal(new CanalCorreo());
+                    break;
+                case 3:
+                    agregado = suscriptor.configurarCanal(new CanalSMS());
+                    break;
+                case 0:
+                    continuar = false;
+                    break;
+                default:
+                    vista.mostrarMensaje("Opcion invalida.");
+                    break;
+            }
+            if (agregado) {
+                cantidadCanales++;
+                vista.mostrarMensaje("Canal agregado correctamente.");
+            } else if (opcion >= 1 && opcion <= 3) {
+                vista.mostrarMensaje("El canal ya fue configurado.");
+            }
+        }
+        if (cantidadCanales == 0) {
+            vista.mostrarMensaje(
+                    "Debe configurar al menos un canal."
+            );
+            return;
+        }
         boolean registrado = controladorPartidos.agregarSuscriptor(suscriptor);
         if (registrado) {
             suscriptores.add(suscriptor);

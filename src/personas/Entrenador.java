@@ -8,10 +8,10 @@ public class Entrenador extends Persona {
     private EspecialidadEntrenador especialidad;
     private String licencia;
 
-    public Entrenador(int dni, String nombre, String apellido, LocalDate fechaNacimiento, EspecialidadEntrenador especialidad, String liciencia) {
+    public Entrenador(int dni, String nombre, String apellido, LocalDate fechaNacimiento, EspecialidadEntrenador especialidad, String licencia) {
         super(dni, nombre, apellido, fechaNacimiento);
         this.especialidad = especialidad;
-        this.licencia = liciencia;
+        this.licencia = licencia;
     }
 
     public EspecialidadEntrenador getEspecialidad() {

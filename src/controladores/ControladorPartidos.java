@@ -9,6 +9,7 @@ import notificaciones.Suscriptor;
 import partidos.Partido;
 import personas.Jugador;
 import torneos.Torneo;
+import enums.ZonaRemate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,4 +78,41 @@ public class ControladorPartidos {
         notificarClubes(partido,notificacion);
         return true;
     }
+
+    public boolean registrarTarjetaAmarilla(Partido partido, int minuto, Jugador jugador) {
+        if (partido == null || jugador == null) {
+            return false;
+        }
+        boolean registrado = partido.registrarAmarilla(minuto,jugador);
+        if (!registrado) {
+            return false;
+        }
+        if (partido.estaExpulsado(jugador)) {
+            Notificacion notificacion = new Notificacion(minuto, "Expulsion por doble amarilla: " +
+                    jugador.getNombre() + " " + jugador.getApellido(), TipoNotificacion.TARJETA_ROJA);
+            notificarClubes(partido,notificacion);
+        }
+        return true;
+    }
+    public boolean registrarRemate(Partido partido, int minuto, Jugador jugador, ZonaRemate zona) {
+        if (partido == null || jugador == null || zona == null) {
+            return false;
+        }
+        return partido.registrarRemate(minuto,jugador,zona);
+    }
+
+    public boolean registrarFalta(Partido partido, int minuto, Jugador jugador) {
+        if (partido == null || jugador == null) {
+            return false;
+        }
+        return partido.registrarFalta(minuto, jugador);
+    }
+
+    public boolean registrarCambio(Partido partido, int minuto, Jugador jugadorSale, Jugador jugadorEntra) {
+        if (partido == null || jugadorSale == null || jugadorEntra == null) {
+            return false;
+        }
+        return partido.registrarCambio(minuto, jugadorSale,jugadorEntra);
+    }
+
 }

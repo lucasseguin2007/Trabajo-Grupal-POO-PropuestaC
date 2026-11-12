@@ -2,6 +2,7 @@ package controladores;
 
 import clubes.Club;
 import clubes.GestorClubes;
+import notificaciones.*;
 import torneos.GestorTorneos;
 import vistas.VistaConsola;
 
@@ -14,9 +15,6 @@ import torneos.Torneo;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
-import notificaciones.CanalEnvio;
-import notificaciones.CanalApp;
-import notificaciones.ServicioNotificaciones;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +38,8 @@ public class ControladorPrincipal {
         this.gestorTorneos = gestorTorneos;
         List<CanalEnvio> canales = new ArrayList<>();
         canales.add(new CanalApp());
+        canales.add(new CanalCorreo());
+        canales.add(new CanalSMS());
         ServicioNotificaciones servicio = new ServicioNotificaciones(canales);
         ControladorPartidos controladorPartidos = new ControladorPartidos(servicio);
         this.controladorSuscriptores = new ControladorSuscriptores(controladorPartidos, vista, gestorTorneos);
