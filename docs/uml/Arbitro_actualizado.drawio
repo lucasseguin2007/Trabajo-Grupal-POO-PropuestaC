@@ -1,0 +1,394 @@
+<mxfile host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36">
+  <diagram id="13e1069c-82ec-6db2-03f1-153e76fe0fe0" name="Página-1">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="2220" pageHeight="2720" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7baba1c4bc27f4b0-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;align=center;fontSize=15;" value="Partido" vertex="1">
+          <mxGeometry height="2519.5" width="120" x="854.5" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="upd21" parent="7baba1c4bc27f4b0-2" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="52.90000000000009" y="677.35" as="geometry" />
+        </mxCell>
+        <mxCell id="7baba1c4bc27f4b0-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;align=center;fontSize=15;" value="Jugador" vertex="1">
+          <mxGeometry height="2519.5" width="120" x="1278.5" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="7baba1c4bc27f4b0-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;align=center;fontSize=15;" value="Evento" vertex="1">
+          <mxGeometry height="2519.5" width="120" x="1649.5" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="0RXEz5m8nW6BmQPxYCe1-2" parent="7baba1c4bc27f4b0-4" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="52.90000000000009" y="618" as="geometry" />
+        </mxCell>
+        <mxCell id="7baba1c4bc27f4b0-8" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;align=center;fontSize=15;" value="Arbitro" vertex="1">
+          <mxGeometry height="2519.5" width="120" x="271.5" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="upd1" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=15;" value="loop" vertex="1">
+          <mxGeometry height="2395.5" width="1850" x="40" y="210.5" as="geometry" />
+        </mxCell>
+        <mxCell id="upd2" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=15;" value="alt" vertex="1">
+          <mxGeometry height="1718.3" width="1770.25" x="79.75" y="280.25" as="geometry" />
+        </mxCell>
+        <mxCell id="upd3" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=15;" value="opt" vertex="1">
+          <mxGeometry height="170.5" width="1687.25" x="132.75" y="1024.25" as="geometry" />
+        </mxCell>
+        <mxCell id="upd4" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=15;" value="alt" vertex="1">
+          <mxGeometry height="554.75" width="1740.25" x="79.75" y="2023.35" as="geometry" />
+        </mxCell>
+        <mxCell id="upd5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[por cada evento del partido]" vertex="1">
+          <mxGeometry height="24" width="202.188" x="347.5" y="217.15" as="geometry" />
+        </mxCell>
+        <mxCell id="upd6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[gol]" vertex="1">
+          <mxGeometry height="24" width="40.359" x="347.5" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="upd7" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd8" value="registrarGol(minuto, jugador, tipo)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="354.65" as="sourcePoint" />
+            <mxPoint x="914.5" y="354.65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd8" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="upd9" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="[en juego y en cancha]&amp;nbsp;&lt;div&gt;new Gol(minuto, jugador, tipo)&lt;/div&gt;">
+          <mxGeometry relative="1" x="-0.483" y="30" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="914.5" y="419.75" as="sourcePoint" />
+            <mxPoint x="1709.5" y="419.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd10" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="1700.8" y="415.1" as="geometry" />
+        </mxCell>
+        <mxCell id="upd11" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryX=1;entryY=1;entryDx=0;entryDy=-5;entryPerimeter=0;" target="upd12" value="registrarEvento(gol)">
+          <mxGeometry relative="1" x="0.0247" as="geometry">
+            <mxPoint x="84.375" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="456.95" />
+              <mxPoint x="994" y="484.85" />
+            </Array>
+            <mxPoint x="914.5" y="456.95" as="sourcePoint" />
+            <mxPoint x="914.5" y="484.85" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd12" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="474" as="geometry" />
+        </mxCell>
+        <mxCell id="upd13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[cambio]" vertex="1">
+          <mxGeometry height="24" width="68.703" x="347.5" y="528.7" as="geometry" />
+        </mxCell>
+        <mxCell id="upd14" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd15" value="registrarCambio(minuto, sale, entra)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="594.9" as="sourcePoint" />
+            <mxPoint x="914.5" y="594.9" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd15" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="907.4" y="590.25" as="geometry" />
+        </mxCell>
+        <mxCell id="upd16" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryX=1;entryY=0;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd17" value="contarCambios(clubSale)">
+          <mxGeometry relative="1" x="0.043" as="geometry">
+            <mxPoint x="102.7109375" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="635.2" />
+              <mxPoint x="994" y="663.1" />
+            </Array>
+            <mxPoint x="914.5" y="635.2" as="sourcePoint" />
+            <mxPoint x="914.5" y="663.1" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd17" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="30" width="14.2" x="907.4" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="upd18" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="0RXEz5m8nW6BmQPxYCe1-2" value="[cambio habilitado] new Cambio(minuto, sale, entra)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-15" as="offset" />
+            <mxPoint x="914.5" y="723.55" as="sourcePoint" />
+            <mxPoint x="1709.5" y="723.55" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd20" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryX=1;entryY=1;entryDx=0;entryDy=-5;entryPerimeter=0;" target="upd21" value="registrarEvento(cambio)">
+          <mxGeometry relative="1" x="0.0266" as="geometry">
+            <mxPoint x="98.546875" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="762.3" />
+              <mxPoint x="994" y="790" />
+            </Array>
+            <mxPoint x="914.5" y="762.3" as="sourcePoint" />
+            <mxPoint x="914.5" y="790.2" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[amarilla]" vertex="1">
+          <mxGeometry height="24" width="72.859" x="347.5" y="830.95" as="geometry" />
+        </mxCell>
+        <mxCell id="upd23" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd24" value="registrarAmarilla(minuto, jugador)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="894.05" as="sourcePoint" />
+            <mxPoint x="914.5" y="894.05" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd24" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="889.4" as="geometry" />
+        </mxCell>
+        <mxCell id="upd25" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="0RXEz5m8nW6BmQPxYCe1-3" value="new TarjetaAmarilla(minuto, jugador)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-25" as="offset" />
+            <mxPoint x="914.5" y="945.2" as="sourcePoint" />
+            <mxPoint x="1709.5" y="945.2" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd27" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryX=1;entryY=1;entryDx=0;entryDy=-5;entryPerimeter=0;" target="upd28" value="registrarEvento(tarjeta)">
+          <mxGeometry relative="1" x="0.0102" as="geometry">
+            <mxPoint x="95.21875" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="976.2" />
+              <mxPoint x="994" y="1010" />
+            </Array>
+            <mxPoint x="914.5" y="976.2" as="sourcePoint" />
+            <mxPoint x="914.5" y="1004.1" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd28" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="909" y="993.25" as="geometry" />
+        </mxCell>
+        <mxCell id="upd29" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[registro exitoso y contarAmarillas(jugador) ≥ 2]" vertex="1">
+          <mxGeometry height="24" width="326.266" x="347.5" y="1034" as="geometry" />
+        </mxCell>
+        <mxCell id="upd30" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd31" value="new TarjetaRoja(minuto, jugador, false)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-15" as="offset" />
+            <mxPoint x="914.5" y="1107.95" as="sourcePoint" />
+            <mxPoint x="1709.5" y="1107.95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd31" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="17.1" x="1703" y="1103.3" as="geometry" />
+        </mxCell>
+        <mxCell id="upd32" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" target="upd33" value="registrarEvento(tarjetaRoja)">
+          <mxGeometry relative="1" x="0.0183" as="geometry">
+            <mxPoint x="110.640625" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="1142.05" />
+              <mxPoint x="994" y="1169.95" />
+            </Array>
+            <mxPoint x="914.5" y="1142.05" as="sourcePoint" />
+            <mxPoint x="914.5" y="1169.95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd33" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="9.74" x="909" y="1159.1" as="geometry" />
+        </mxCell>
+        <mxCell id="upd34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[roja directa]" vertex="1">
+          <mxGeometry height="24" width="94.562" x="347.5" y="1221.55" as="geometry" />
+        </mxCell>
+        <mxCell id="upd35" edge="1" parent="1" style="html=1;endArrow=block;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" target="upd36" value="registrarTarjetaRoja(minuto, jugador)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="1297.05" as="sourcePoint" />
+            <mxPoint x="914.5" y="1297.05" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd36" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="32.55" width="17.1" x="905.9499999999999" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="upd37" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd38" value="new TarjetaRoja(minuto, jugador, true)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-25" as="offset" />
+            <mxPoint x="914.5" y="1362.15" as="sourcePoint" />
+            <mxPoint x="1709.5" y="1362.15" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd38" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="20" x="1700" y="1357.5" as="geometry" />
+        </mxCell>
+        <mxCell id="upd39" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="registrarEvento(tarjetaRoja)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110.640625" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="1411.75" />
+              <mxPoint x="994" y="1439.65" />
+            </Array>
+            <mxPoint x="914.5" y="1411.75" as="sourcePoint" />
+            <mxPoint x="914.5" y="1439.65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd40" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="1428.8" as="geometry" />
+        </mxCell>
+        <mxCell id="upd41" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[partido fuera de juego o evento nulo]" vertex="1">
+          <mxGeometry height="24" width="420" x="347.5" y="2033.1" as="geometry" />
+        </mxCell>
+        <mxCell id="upd42" edge="1" parent="1" style="html=1;endArrow=open;dashed=1;endSize=8;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="false">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="914.5" y="2105.5" as="sourcePoint" />
+            <mxPoint x="331.5" y="2105.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[partido en juego y evento válido]" vertex="1">
+          <mxGeometry height="24" width="420" x="347.5" y="2138.5" as="geometry" />
+        </mxCell>
+        <mxCell id="upd44" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="upd45" value="getJugador()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-15" as="offset" />
+            <mxPoint x="914.5" y="2215.55" as="sourcePoint" />
+            <mxPoint x="1709.5" y="2215.55" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd45" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="20" x="1700" y="2210.9" as="geometry" />
+        </mxCell>
+        <mxCell id="upd46" edge="1" parent="1" style="html=1;endArrow=open;dashed=1;endSize=8;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="jugador">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-15" as="offset" />
+            <mxPoint x="1709.5" y="2260.5" as="sourcePoint" />
+            <mxPoint x="914.5" y="2260.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd47" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="eventos.add(evento)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="129.4375" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="2466.5" />
+              <mxPoint x="994" y="2494.4" />
+            </Array>
+            <mxPoint x="914.5" y="2466.5" as="sourcePoint" />
+            <mxPoint x="914.5" y="2494.4" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="upd48" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="2483.55" as="geometry" />
+        </mxCell>
+        <mxCell id="upd49" edge="1" parent="1" style="html=1;endArrow=open;dashed=1;endSize=8;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="true">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="914.5" y="2556.4" as="sourcePoint" />
+            <mxPoint x="331.5" y="2556.4" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0RXEz5m8nW6BmQPxYCe1-3" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="1702.4" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="extra034" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[falta]" vertex="1">
+          <mxGeometry height="24" width="94.562" x="347.5" y="1466.55" as="geometry" />
+        </mxCell>
+        <mxCell id="extra035" edge="1" parent="1" style="html=1;endArrow=block;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" target="extra036" value="registrarFalta(minuto, jugador)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="1542.05" as="sourcePoint" />
+            <mxPoint x="914.5" y="1542.05" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra036" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="32.55" width="17.1" x="905.9499999999999" y="1525" as="geometry" />
+        </mxCell>
+        <mxCell id="extra037" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="extra038" value="new Falta(minuto, jugador)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-185.5" y="-25" as="offset" />
+            <mxPoint x="914.5" y="1607.15" as="sourcePoint" />
+            <mxPoint x="1709.5" y="1607.15" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra038" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="20" x="1700" y="1602.5" as="geometry" />
+        </mxCell>
+        <mxCell id="extra039" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="registrarEvento(falta)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110.640625" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="1656.75" />
+              <mxPoint x="994" y="1684.65" />
+            </Array>
+            <mxPoint x="914.5" y="1656.75" as="sourcePoint" />
+            <mxPoint x="914.5" y="1684.65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra040" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="1673.8" as="geometry" />
+        </mxCell>
+        <mxCell id="extra0sep" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#888888;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="1449" as="sourcePoint" />
+            <mxPoint x="1850" y="1449" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra134" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[remate]" vertex="1">
+          <mxGeometry height="24" width="94.562" x="347.5" y="1711.55" as="geometry" />
+        </mxCell>
+        <mxCell id="extra135" edge="1" parent="1" style="html=1;endArrow=block;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" target="extra136" value="registrarRemate(minuto, jugador, zona)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="331.5" y="1787.05" as="sourcePoint" />
+            <mxPoint x="914.5" y="1787.05" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra136" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="32.55" width="17.1" x="905.9499999999999" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="extra137" edge="1" parent="1" style="html=1;endArrow=block;entryX=0;entryY=0;fontFamily=Verdana;elbow=vertical;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;entryDx=0;entryDy=5;entryPerimeter=0;" target="extra138" value="new Remate(minuto, jugador, zona)">
+          <mxGeometry relative="1" x="-0.4717" y="25" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="914.5" y="1852.15" as="sourcePoint" />
+            <mxPoint x="1709.5" y="1852.15" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra138" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="20" x="1700" y="1847.5" as="geometry" />
+        </mxCell>
+        <mxCell id="extra139" edge="1" parent="1" style="html=1;endArrow=block;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="registrarEvento(remate)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110.640625" as="offset" />
+            <Array as="points">
+              <mxPoint x="994" y="1901.75" />
+              <mxPoint x="994" y="1929.65" />
+            </Array>
+            <mxPoint x="914.5" y="1901.75" as="sourcePoint" />
+            <mxPoint x="914.5" y="1929.65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="extra140" parent="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=15;" value="" vertex="1">
+          <mxGeometry height="20.15" width="14.2" x="905.8" y="1918.8" as="geometry" />
+        </mxCell>
+        <mxCell id="extra1sep" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#888888;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="1694" as="sourcePoint" />
+            <mxPoint x="1850" y="1694" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="Detalle de cada llamada a registrarEvento(evento)" vertex="1">
+          <mxGeometry height="24" width="480" x="347" y="1999" as="geometry" />
+        </mxCell>
+        <mxCell id="outersep" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#888888;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="2127" as="sourcePoint" />
+            <mxPoint x="1820" y="2127" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="inner" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=15;" value="alt" vertex="1">
+          <mxGeometry height="300" width="1660" x="115" y="2271" as="geometry" />
+        </mxCell>
+        <mxCell id="nog" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[jugador no convocado]" vertex="1">
+          <mxGeometry height="24" width="310" x="380" y="2280" as="geometry" />
+        </mxCell>
+        <mxCell id="nor" edge="1" parent="1" style="html=1;endArrow=open;dashed=1;endSize=8;libavoidRouting=0;curved=0;rounded=0;defaultLabelBackgroundColor=page;fontSize=15;align=center;verticalAlign=middle;spacingLeft=0;edgeStyle=none;noEdgeStyle=1;labelBackgroundColor=default;" value="false">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-15" as="offset" />
+            <mxPoint x="914.5" y="2320" as="sourcePoint" />
+            <mxPoint x="331.5" y="2320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="innersep" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#888888;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="115" y="2346" as="sourcePoint" />
+            <mxPoint x="1775" y="2346" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yesg" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=15;" value="[jugador convocado]" vertex="1">
+          <mxGeometry height="24" width="310" x="380" y="2354" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
