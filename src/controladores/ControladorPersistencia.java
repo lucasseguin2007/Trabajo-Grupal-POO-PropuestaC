@@ -3,6 +3,7 @@ package controladores;
 import persistencia.GestorArchivosTorneo;
 import torneos.GestorTorneos;
 import vistas.VistaConsola;
+import clubes.GestorClubes;
 
 import java.io.IOException;
 public class ControladorPersistencia {
@@ -10,11 +11,13 @@ public class ControladorPersistencia {
     private GestorTorneos gestorTorneos;
     private GestorArchivosTorneo gestorArchivos;
     private final String RUTA = "torneos.dat";
+    private GestorClubes gestorClubes;
 
-    public ControladorPersistencia(VistaConsola vista, GestorTorneos gestorTorneos) {
+    public ControladorPersistencia(VistaConsola vista, GestorTorneos gestorTorneos, GestorClubes gestorClubes) {
         this.vista = vista;
         this.gestorTorneos = gestorTorneos;
         this.gestorArchivos = new GestorArchivosTorneo();
+        this.gestorClubes = gestorClubes;
     }
 
     public void guardarDatos() {
@@ -30,6 +33,7 @@ public class ControladorPersistencia {
         try {
             GestorTorneos gestorCargado = gestorArchivos.cargarTorneos(RUTA);
             gestorTorneos.cargarDatos(gestorCargado);
+            gestorClubes.sincronizarClubesConTorneo(gestorTorneos.getTorneoActual());
             vista.mostrarMensaje("Datos cargados correctamente.");
         } catch (IOException e) {
             vista.mostrarMensaje("Error al leer el archivo: " + e.getMessage());

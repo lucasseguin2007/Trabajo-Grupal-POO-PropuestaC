@@ -1,5 +1,6 @@
 package controladores;
 import clubes.Club;
+import partidos.Partido;
 import torneos.GestorTorneos;
 import torneos.InscripcionTorneo;
 import torneos.Torneo;
@@ -45,6 +46,17 @@ public class ControladorTorneos {
                     break;
                 case 7:
                     generarFixture();
+                    break;
+                case 8:
+                    iniciarTorneo();
+                    break;
+
+                case 9:
+                    finalizarTorneo();
+                    break;
+
+                case 10:
+                    archivarTorneo();
                     break;
                 case 0:
                     vista.mostrarMensaje("Volviendo al menú principal...");
@@ -172,11 +184,57 @@ public class ControladorTorneos {
             return;
         }
         try {
-            torneo.generarFixture();
-            vista.mostrarMensaje("Fixture generado.");
-            vista.mostrarMensaje("Cantidad de partidos: " + torneo.getPartidos().size());
+            List<Partido> fixture = torneo.generarFixture();
+            if (fixture.isEmpty()) {
+                vista.mostrarMensaje("No se pudo generar el fixture.");
+                return;
+            }
+            vista.mostrarMensaje("Fixture generado correctamente.");
+            vista.mostrarMensaje("Cantidad de partidos: " + fixture.size());
         } catch (IllegalArgumentException | IllegalStateException e) {
             vista.mostrarMensaje("Error: " + e.getMessage());
+        }
+    }
+
+    public void iniciarTorneo() {
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        if (torneo == null) {
+            vista.mostrarMensaje("No existe un torneo actual.");
+            return;
+        }
+        boolean iniciado = torneo.iniciarTorneo();
+        if (iniciado) {
+            vista.mostrarMensaje("Torneo iniciado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo iniciar el torneo. Verifique el fixture");
+        }
+    }
+
+    public void finalizarTorneo() {
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        if (torneo == null) {
+            vista.mostrarMensaje("No existe un torneo actual.");
+            return;
+        }
+        boolean finalizado = torneo.finalizarTorneo();
+        if (finalizado) {
+            vista.mostrarMensaje("Torneo finalizado correctamente.");
+        } else {
+            vista.mostrarMensaje("No se pudo finalizar el torneo. Verifique que los partidos hayan terminado");
+        }
+    }
+
+    public void archivarTorneo() {
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        if (torneo == null) {
+            vista.mostrarMensaje("No existe un torneo actual.");
+            return;
+        }
+        boolean archivado = gestorTorneos.archivarTorneoActual();
+        if (archivado) {
+            vista.mostrarMensaje("Torneo archivado. Ya puede crear uno nuevo");
+        } else{
+            vista.mostrarMensaje("No se pudo archivar el torneo. Debe esta finalizado.");
         }
     }
 

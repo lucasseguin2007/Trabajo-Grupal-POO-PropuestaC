@@ -9,6 +9,8 @@ import torneos.InscripcionTorneo;
 import torneos.JugadorPlantel;
 import torneos.Torneo;
 import vistas.VistaConsola;
+import personas.Entrenador;
+import enums.EspecialidadEntrenador;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -40,10 +42,16 @@ public class ControladorJugadores {
                 case 3:
                     agregarClub();
                     break;
+                case 4:
+                    asignarEntrenador();
+                    break;
+
+                case 5:
+                    consultarEntrenador();
+                    break;
                 case 0:
                     vista.mostrarMensaje("Volviendo al menú principal...");
                     break;
-
                 default:
                     vista.mostrarMensaje("Opción inválida.");
                     break;
@@ -122,7 +130,11 @@ public class ControladorJugadores {
             LocalDate inicioContrato = LocalDate.parse(vista.solicitarTexto("Inicio del contrato (AAAA-MM-DD): "));
             LocalDate finContrato = LocalDate.parse(vista.solicitarTexto("Fin del contrato (AAAA-MM-DD): "));
             double salario = Double.parseDouble(vista.solicitarTexto("Salario: "));
-            gestorContratos.registrarAlta(jugador, inscripcionEncontrada.getClub(), inicioContrato, finContrato, salario);
+            boolean contratoRegistrado = gestorContratos.registrarAlta(jugador, inscripcionEncontrada.getClub(), inicioContrato, finContrato, salario);
+            if (!contratoRegistrado) {
+                vista.mostrarMensaje("No se pudo registrar el contrato del jugador");
+                return;
+            }
             boolean agregado = inscripcionEncontrada.agregarJugador(numeroCamiseta, jugador);
             if (agregado) {
                 vista.mostrarMensaje("Jugador agregado correctamente.");
@@ -136,5 +148,79 @@ public class ControladorJugadores {
         } catch (IllegalArgumentException e) {
             vista.mostrarMensaje("Error: " + e.getMessage());
         }
+    }
+    public void asignarEntrenador() {
+        String nombreClub = vista.solicitarTexto("Nombre del club:");
+        Club club = gestorClubes.buscarClub(nombreClub);
+        if (club == null) {
+            vista.mostrarMensaje("El club no existe.");
+            return;
+        }
+
+        try {
+            int dni = Integer.parseInt(vista.solicitarTexto("DNI:"));
+            String nombre = vista.solicitarTexto("Nombre:");
+            String apellido = vista.solicitarTexto("Apellido:");
+            LocalDate nacimiento = LocalDate.parse(vista.solicitarTexto("Fecha de nacimiento (AAAA-MM-DD):"));
+            vista.mostrarMensaje("\n=== ESPECIALIDAD ===");
+            vista.mostrarMensaje("1. Director tecnico");
+            vista.mostrarMensaje("2. Preparador fisico");
+            vista.mostrarMensaje("3. Ayudante");
+            int opcion = vista.solicitarOpcion();
+            EspecialidadEntrenador especialidad;
+            switch (opcion) {
+                case 1:
+                    especialidad = EspecialidadEntrenador.DIRECTOR_TECNICO;
+                    break;
+                case 2:
+                    especialidad = EspecialidadEntrenador.PREPARADOR_FISICO;
+                    break;
+                case 3:
+                    especialidad = EspecialidadEntrenador.AYUDANTE;
+                    break;
+                default:
+                    vista.mostrarMensaje("Especialidad invalida.");
+                    return;
+            }
+            String licencia = vista.solicitarTexto("Licencia:");
+            Entrenador entrenador = new Entrenador(dni,nombre,apellido,nacimiento,especialidad,licencia);
+            if (club.asignarEntrenador(entrenador)) {
+                boolean guardado = gestorClubes.guardarCambios();
+                if (guardado) {
+                    vista.mostrarMensaje("Entrenador asignado y guardado correctamente");
+                } else {
+                    vista.mostrarMensaje("Entrenador asignado pero no se pudo guardar en el archivo.");
+                }
+            } else {
+                vista.mostrarMensaje("No se pudo asignar el entrenador");
+            }
+        } catch (NumberFormatException e) {
+            vista.mostrarMensaje("DNI invalido.");
+        } catch (DateTimeParseException e) {
+            vista.mostrarMensaje("Fecha invalida.");
+        } catch (IllegalArgumentException e) {
+            vista.mostrarMensaje("Error: " + e.getMessage());
+        }
+    }
+    public void consultarEntrenador() {
+        String nombreClub = vista.solicitarTexto("Nombre del club: ");
+        Club club = gestorClubes.buscarClub(nombreClub);
+        if (club == null) {
+            vista.mostrarMensaje("El club no existe.");
+            return;
+        }
+        Entrenador entrenador = club.getEntrenador();
+
+        if (entrenador == null) {
+            vista.mostrarMensaje("El club no tiene entrenador asignado.");
+            return;
+        }
+        vista.mostrarMensaje("\n=== ENTRENADOR DEL CLUB ===");
+        vista.mostrarMensaje("Club: " + club.getNombre());
+        vista.mostrarMensaje("Nombre: " + entrenador.getNombre());
+        vista.mostrarMensaje("Apellido: " + entrenador.getApellido());
+        vista.mostrarMensaje("DNI: " + entrenador.getDni());
+        vista.mostrarMensaje("Especialidad: " + entrenador.getEspecialidad());
+        vista.mostrarMensaje("Licencia: " + entrenador.getLicencia());
     }
 }

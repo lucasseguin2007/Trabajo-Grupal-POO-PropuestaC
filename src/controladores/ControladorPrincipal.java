@@ -1,25 +1,12 @@
 package controladores;
 
-import clubes.Club;
 import clubes.GestorClubes;
+import notificaciones.*;
 import torneos.GestorTorneos;
 import vistas.VistaConsola;
-
 import clubes.GestorContratos;
-import personas.Jugador;
-import enums.Posicion;
-import torneos.JugadorPlantel;
-import torneos.InscripcionTorneo;
-import torneos.Torneo;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.List;
-import notificaciones.CanalEnvio;
-import notificaciones.CanalApp;
-import notificaciones.ServicioNotificaciones;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControladorPrincipal {
     private VistaConsola vista;
@@ -40,6 +27,8 @@ public class ControladorPrincipal {
         this.gestorTorneos = gestorTorneos;
         List<CanalEnvio> canales = new ArrayList<>();
         canales.add(new CanalApp());
+        canales.add(new CanalCorreo());
+        canales.add(new CanalSMS());
         ServicioNotificaciones servicio = new ServicioNotificaciones(canales);
         ControladorPartidos controladorPartidos = new ControladorPartidos(servicio);
         this.controladorSuscriptores = new ControladorSuscriptores(controladorPartidos, vista, gestorTorneos);
@@ -47,10 +36,11 @@ public class ControladorPrincipal {
         this.gestorContratos = new GestorContratos();
         this.gestorClubes = new GestorClubes();
         this.controladorTorneos = new ControladorTorneos(vista, gestorTorneos, gestorClubes);
-        this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
+        this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);
+        this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
         this.controladorPatrocinios = new ControladorPatrocinios(vista,gestorTorneos);
         this.controladorContratos = new ControladorContratos(vista,gestorTorneos,gestorContratos);
-        this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos);
+        this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos,gestorClubes);
     }
 
     public void iniciar() {

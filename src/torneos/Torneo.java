@@ -6,6 +6,7 @@ import enums.EstadoTorneo;
 import enums.MotivoSancion;
 import enums.RolEquipo;
 import eventos.Evento;
+import eventos.TarjetaAmarilla;
 import eventos.TarjetaRoja;
 import partidos.Estadio;
 import partidos.Partido;
@@ -26,7 +27,7 @@ public class Torneo implements Serializable {
     private EstadoTorneo estado;
     private List<Partido> partidos;
     private List<InscripcionTorneo> inscriptos;
-    //Metodo constructor
+
     public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre no puede estar vacío");
@@ -46,11 +47,9 @@ public class Torneo implements Serializable {
     }
 
     //getter
-
     public String getNombre() {
         return nombre;
     }
-
     public EstadoTorneo getEstado() {
         return estado;
     }
@@ -148,19 +147,56 @@ public class Torneo implements Serializable {
             }
         }
         partido.finalizar();
-        for (Evento evento : partido.getEventos()) {
-            if (evento instanceof TarjetaRoja) {
-                for (InscripcionTorneo inscripcion : inscriptos) {
-                    JugadorPlantel jp = inscripcion.getPlantel().buscarJugador(evento.getJugador());
-                    if (jp != null) {
-                        Sancion sancion = new Sancion(1, MotivoSancion.EXPULSION,jp,inscripcion.getClub());
-                        jp.agregarSancion(sancion);
-                        break;
+        for (InscripcionTorneo inscripcion : inscriptos) {
+            Club club = inscripcion.getClub();
+            if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
+                continue;
+            }
+            for (JugadorPlantel jp: inscripcion.getPlantel().getJugadoresPlantel()) {
+                Jugador jugador = jp.getJugador();
+                boolean expulsado = false;
+                int amarillasPartido = 0;
+                for (Evento evento: partido.getEventos()) {
+                    if (!evento.getJugador().equals(jugador)) {
+                        continue;
                     }
+                    if (evento instanceof TarjetaRoja) {
+                        expulsado = true;
+                    }
+                    if (evento instanceof TarjetaAmarilla) {
+                        amarillasPartido++;
+                    }
+                }
+                int totalAmarillas = contarAmarillasTorneo(jugador);
+                boolean acumulacion = totalAmarillas / 5 > (totalAmarillas - amarillasPartido) / 5;
+                if (expulsado || acumulacion) {
+                    MotivoSancion motivo;
+                    if (expulsado) {
+                        motivo = MotivoSancion.EXPULSION;
+                    } else {
+                        motivo = MotivoSancion.ACUMULACION_AMARILLAS;
+                    }
+                    Sancion sancion = new Sancion(1,motivo,jp,club);
+                    jp.agregarSancion(sancion);
                 }
             }
         }
         return true;
+    }
+
+    private int contarAmarillasTorneo(Jugador jugador) {
+        int cantidad = 0;
+        for (Partido partido: partidos) {
+            if (partido.getEstado() != EstadoPartido.FINALIZADO) {
+                continue;
+            }
+            for (Evento evento: partido.getEventos()) {
+                if (evento instanceof TarjetaAmarilla && evento.getJugador().equals(jugador)) {
+                    cantidad++;
+                }
+            }
+        }
+        return cantidad;
     }
 
     public List<Partido> generarFixture() {
@@ -283,7 +319,7 @@ public class Torneo implements Serializable {
                     || otroPartido.getEstadio() == null) {
                 continue;
             }
-            if (otroPartido.getEstadio() == estadio) {
+            if (otroPartido.getEstadio().getNombre().equalsIgnoreCase(estadio.getNombre())) {
                 LocalDateTime inicioExistente = otroPartido.getFechaHora();
                 LocalDateTime finExistente =  inicioExistente.plusHours(3);
                 boolean haySuperposicion = nuevaFecha.isBefore(finExistente) && inicioExistente.isBefore(finNuevo);
@@ -319,7 +355,7 @@ public class Torneo implements Serializable {
             Arbitro[] arbitrosAsignados = otroPartido.getTernaArbitral().getArbitros();
             for (Arbitro nuevo : nuevosArbitros) {
                 for (Arbitro asignado : arbitrosAsignados) {
-                    if (nuevo == asignado) {
+                    if (asignado != null && nuevo.getDni() == asignado.getDni()) {
                         return false;
                     }
                 }
@@ -351,61 +387,39 @@ public class Torneo implements Serializable {
     }
 
     public boolean convocarTitular(Partido partido, RolEquipo rol, JugadorPlantel jugador) {
-        if (partido == null || rol == null || jugador == null) {
+        if (!puedeConvocar(partido,rol,jugador)) {
             return false;
         }
-
-        if (!jugadorInscripto(partido, rol, jugador.getJugador())) {
-            return false;
-        }
-        boolean perteneceAlPlantel = false;
-        for (InscripcionTorneo inscripcion : inscriptos) {
-            Club club = inscripcion.getClub();
-            if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
-                continue;
-            }
-            if (inscripcion.getPlantel().buscarJugador(jugador.getJugador()) == jugador) {
-                perteneceAlPlantel = true;
-                break;
-            }
-        }
-        if (!perteneceAlPlantel) {
-            return false;
-        }
-
-        if (jugador.estaSuspendido()) {
-            return false;
-        }
-        return partido.agregarTitular(rol, jugador);
+        return partido.agregarTitular(rol,jugador);
     }
 
     public boolean convocarSuplente(Partido partido, RolEquipo rol, JugadorPlantel jugador) {
+        if (!puedeConvocar(partido,rol,jugador)) {
+            return false;
+        }
+        return partido.agregarSuplente(rol,jugador);
+    }
+    private boolean puedeConvocar(Partido partido, RolEquipo rol,JugadorPlantel jugador) {
         if (partido == null || rol == null || jugador == null) {
             return false;
         }
-
-        if (!jugadorInscripto(partido, rol, jugador.getJugador())) {
+        if (!jugadorInscripto(partido,rol,jugador.getJugador())) {
             return false;
         }
-        boolean perteneceAlPlantel = false;
-        for (InscripcionTorneo inscripcion : inscriptos) {
+        boolean perteneceAlplantel = false;
+        for (InscripcionTorneo inscripcion: inscriptos) {
             Club club = inscripcion.getClub();
             if (!club.equals(partido.getLocal()) && !club.equals(partido.getVisitante())) {
                 continue;
             }
             if (inscripcion.getPlantel().buscarJugador(jugador.getJugador()) == jugador) {
-                perteneceAlPlantel = true;
+                perteneceAlplantel = true;
                 break;
             }
         }
-        if (!perteneceAlPlantel) {
+        if (!perteneceAlplantel) {
             return false;
         }
-
-        if (jugador.estaSuspendido()) {
-            return false;
-        }
-        return partido.agregarSuplente(rol, jugador);
+        return !jugador.estaSuspendido();
     }
-
 }
