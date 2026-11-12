@@ -23,4 +23,7 @@ public class Estadio implements Serializable {
     public Direccion getDireccion() {
         return direccion;
     }
+    public String getNombre() {
+        return nombre;
+    }
 }

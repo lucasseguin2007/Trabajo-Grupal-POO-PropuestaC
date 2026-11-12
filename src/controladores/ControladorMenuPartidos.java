@@ -135,13 +135,14 @@ public class ControladorMenuPartidos {
             Estadio estadio = new Estadio(nombreEstadio, capacidad, "Templado", TipoCesped.NATURAL, "Calle Principal", 100, ciudad, "Buenos Aires");
 
             String nombrePrincipal = vista.solicitarTexto("Nombre del árbitro principal: ");
-
             String nombreAsistente1 = vista.solicitarTexto("Nombre del primer asistente: ");
-
             String nombreAsistente2 = vista.solicitarTexto("Nombre del segundo asistente: ");
-            Arbitro arbitroPrincipal = new Arbitro(40000001, nombrePrincipal, "Principal", LocalDate.of(1980, 1, 1), CategoriaArbitro.NACIONAL, null, "AFA");
-            Arbitro asistente1 = new Arbitro(40000002, nombreAsistente1, "Asistente", LocalDate.of(1981, 1, 1), CategoriaArbitro.NACIONAL, null, "AFA");
-            Arbitro asistente2 = new Arbitro(40000003, nombreAsistente2, "Asistente", LocalDate.of(1982, 1, 1), CategoriaArbitro.NACIONAL, null, "AFA");
+            int dniPrincipal = Integer.parseInt(vista.solicitarTexto("DNI del arbitro principal:"));
+            int dniAsistente1 = Integer.parseInt(vista.solicitarTexto("DNI del primer asistente:"));
+            int dniAsistente2 = Integer.parseInt(vista.solicitarTexto("DNI del segundo asistente:"));
+            Arbitro arbitroPrincipal = new Arbitro(dniPrincipal,nombrePrincipal,"Principal",LocalDate.of(1980,1,1),CategoriaArbitro.NACIONAL,null,"AFA");
+            Arbitro asistente1 = new Arbitro(dniAsistente1,nombreAsistente1,"Asistente",LocalDate.of(1981,1,1),CategoriaArbitro.NACIONAL,null,"AFA");
+            Arbitro asistente2 = new Arbitro(dniAsistente2,nombreAsistente2,"Asistente",LocalDate.of(1982,1,1), CategoriaArbitro.NACIONAL,null,"AFA");
             boolean programado = partido.programarPartido(
                     torneo,
                     fechaHora,

@@ -50,7 +50,7 @@ public class ControladorPrincipal {
         this.controladorJugadores = new ControladorJugadores(vista, gestorTorneos, gestorContratos, gestorClubes);this.controladorReportes = new ControladorReportes(vista,gestorTorneos);
         this.controladorPatrocinios = new ControladorPatrocinios(vista,gestorTorneos);
         this.controladorContratos = new ControladorContratos(vista,gestorTorneos,gestorContratos);
-        this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos);
+        this.controladorPersistencia = new ControladorPersistencia(vista, gestorTorneos,gestorClubes);
     }
 
     public void iniciar() {
