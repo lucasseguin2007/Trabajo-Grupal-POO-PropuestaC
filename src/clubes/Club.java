@@ -43,8 +43,8 @@ public class Club implements Serializable {
     public List<Jugador> getJugadores() {
         return new ArrayList<>(jugadores);
     }
-    // Metodos
 
+    // Metodos
     public boolean contieneJugador(Jugador jugador) {
         return jugadores.contains(jugador);
     }

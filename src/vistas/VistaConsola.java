@@ -22,6 +22,7 @@ public class VistaConsola {
         System.out.println("0. Salir");
         System.out.println("================================");
     }
+
     public int solicitarOpcion() {
         System.out.println("Seleccione una opcion: ");
         try {
