@@ -19,7 +19,7 @@ public class TernaArbitral implements Serializable {
             return false;
         }
         for (Arbitro a : arbitros) {
-            if (a == arbitro) {
+            if (a != null && a.getDni() == arbitro.getDni()) {
                 return false;
             }
         }

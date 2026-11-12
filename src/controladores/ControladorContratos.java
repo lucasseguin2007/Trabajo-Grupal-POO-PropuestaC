@@ -9,6 +9,7 @@ import torneos.InscripcionTorneo;
 import torneos.JugadorPlantel;
 import torneos.Torneo;
 import vistas.VistaConsola;
+import enums.EstadoTorneo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -97,6 +98,11 @@ public class ControladorContratos {
     }
 
     private void rescindirContrato() {
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        if (torneo != null && torneo.getEstado() != EstadoTorneo.PLANIFICADO) {
+            vista.mostrarMensaje("No se pueden rescindir contratos durante o después del torneo");
+            return;
+        }
         Jugador jugador = buscarJugador();
         if (jugador == null) {
             return;
@@ -110,11 +116,19 @@ public class ControladorContratos {
     }
 
     private void transferirJugador() {
+        Torneo torneo = gestorTorneos.getTorneoActual();
+        if (torneo == null) {
+            vista.mostrarMensaje("No existe un torneo actual.");
+            return;
+        }
+        if (torneo.getEstado() != EstadoTorneo.PLANIFICADO) {
+            vista.mostrarMensaje("No se permiten transferencias fuera de la etapa de planificacion.");
+            return;
+        }
         Jugador jugador = buscarJugador();
         if (jugador == null) {
             return;
         }
-        Torneo torneo = gestorTorneos.getTorneoActual();
         String nombreClub = vista.solicitarTexto("Nombre del club de destino: ");
         Club clubDestino = null;
         for (InscripcionTorneo inscripcion : torneo.getInscriptos()) {

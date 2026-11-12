@@ -47,11 +47,9 @@ public class Torneo implements Serializable {
     }
 
     //getter
-
     public String getNombre() {
         return nombre;
     }
-
     public EstadoTorneo getEstado() {
         return estado;
     }
@@ -321,7 +319,7 @@ public class Torneo implements Serializable {
                     || otroPartido.getEstadio() == null) {
                 continue;
             }
-            if (otroPartido.getEstadio() == estadio) {
+            if (otroPartido.getEstadio().getNombre().equalsIgnoreCase(estadio.getNombre())) {
                 LocalDateTime inicioExistente = otroPartido.getFechaHora();
                 LocalDateTime finExistente =  inicioExistente.plusHours(3);
                 boolean haySuperposicion = nuevaFecha.isBefore(finExistente) && inicioExistente.isBefore(finNuevo);
@@ -357,7 +355,7 @@ public class Torneo implements Serializable {
             Arbitro[] arbitrosAsignados = otroPartido.getTernaArbitral().getArbitros();
             for (Arbitro nuevo : nuevosArbitros) {
                 for (Arbitro asignado : arbitrosAsignados) {
-                    if (nuevo == asignado) {
+                    if (asignado != null && nuevo.getDni() == asignado.getDni()) {
                         return false;
                     }
                 }
